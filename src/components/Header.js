@@ -10,8 +10,8 @@ class Header extends React.Component {
             </div>
             <ul className="list-inline">
               <li className="active"><a href="/">Công thức nấu ăn</a></li>
-              <li className><a href="/dia-diem"><span className="fa fa-map-marker" /> Địa điểm</a></li>
-              <li className><a href="/san-pham"><span className="fa fa-shopping-basket" /> Sản phẩm</a></li>
+              <li><a href="/dia-diem"><span className="fa fa-map-marker" /> Địa điểm</a></li>
+              <li><a href="/san-pham"><span className="fa fa-shopping-basket" /> Sản phẩm</a></li>
             </ul>
           </div>
         </div>
@@ -172,34 +172,34 @@ class Header extends React.Component {
                   </ul>
                   <a target="_self" className="menu-recipe-link" href="/cach-lam">Công thức</a>
                 </li>
-                <li className>
+                <li>
                   <a href="/cong-dong">Cộng đồng</a>
                 </li>
-                <li className>
+                <li>
                   <a href="/blog">Blog</a>
                 </li>
-                <li className>
+                <li>
                   <a href="/bo-suu-tap">Bộ sưu tập</a>
                 </li>
-                <li className>
+                <li>
                   <a href="/video">Videos</a>
                 </li>
-                <li className>
+                <li>
                   <a href="/thanh-vien">Top thành viên</a>
                 </li>
-                <li className>
+                <li>
                   <a href="/lop-hoc-nau-an"><span className="fa fa-calendar" /> Lớp học nấu ăn</a>
                 </li>
-                <li className>
+                <li>
                   <a href="/contest">Cuộc thi ẩm thực</a>
                 </li>
-                <li className>
+                <li>
                   <a href="/doi-thuong"><span className="fa fa-gift" /> Đổi thưởng</a>
                 </li>
-                <li className="dropdown )">
+                <li className="dropdown">
                   <a className="dropdown-toggle" id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="fa fa-bars" /></a>
                   <ul className="dropdown-menu">
-                    <li className>
+                    <li>
                       <a href="/wiki"> <span className="fa fa-book" /> Wiki</a>
                     </li>
                   </ul>
@@ -277,7 +277,7 @@ class Header extends React.Component {
                 </a>
               </div>
               <div className="cell dropdown" style={{ paddingRight: 0 }}>
-                <span id="openRequiredDialog" className="btn-login" onclick="openRequiredDialogEvent()">Đăng nhập</span>
+                <span id="openRequiredDialog" className="btn-login">Đăng nhập</span>
               </div>
             </div>
             <div id="update-profile-popup" style={{ display: 'none' }} />

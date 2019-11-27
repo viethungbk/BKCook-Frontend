@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from './components/Header';
-import Banner from './components/header/Banner';
 import Container from './components/Container';
 import Footer from './components/Footer';
 import './App.css';
@@ -11,10 +10,6 @@ function App() {
       {/* start header */}
       <Header />
       {/* end header */}
-
-      {/* start banner  */}
-      <Banner />
-      {/* end banner */}
 
       {/* start content */}
       <Container />

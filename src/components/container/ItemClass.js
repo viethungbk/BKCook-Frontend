@@ -1,25 +1,18 @@
 import React from 'react';
-import RegisterButton from './RegisterButton';
 
-class Class extends React.Component {
+class ItemClass extends React.Component {
   render() {
-    let { name, type, link, imageLink, location, dateTime } = this.props;
+    let { name, link, imageLink, location, time } = this.props;
     return (
       <div className="item">
         <div className="item-inner">
           <div className="item-photo">
             <a href={link} target="_self">
-              <img 
-                className="lazy img-responsive" 
-                alt={name}
-                src={imageLink}
-                style={{ display: 'block' }} 
-              />
+              <img alt={name} className="lazy img-responsive" src={imageLink} style={{ display: 'block' }} />
             </a>
           </div>
           <div className="item-info">
             <div className="item-header">
-              <div className="type">{type}</div>
               <div className="title">
                 <a href={link} target="_self">
                   <h3>{name}</h3>
@@ -28,14 +21,19 @@ class Class extends React.Component {
             </div>
             <div className="event-calendar">
               <div className="location">{location}</div>
-              <div className="date">{dateTime.date} <span className="time">{dateTime.time}</span></div>
+              <div className="date">{time}</div>
             </div>
           </div>
-          <RegisterButton />
+          <div className="register">
+            <a className="btn btn-orange" href={link} target="_self">
+              <i className="fa fa-hand-o-right" />
+              Đăng ký
+            </a>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default Class;
+export default ItemClass;

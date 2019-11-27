@@ -66,10 +66,10 @@ const listMember = [
 
 class ListTopMember extends React.Component {
   renderListTopMember() {
-    return listMember.map(member => {
+    return listMember.map((member, key) => {
       let { name, link, imageLink, recipe } = member;
       return (
-        <TopMember name={name} link={link} imageLink={imageLink} recipe={recipe} />
+        <TopMember key={key} name={name} link={link} imageLink={imageLink} recipe={recipe} />
       );
     });
   }

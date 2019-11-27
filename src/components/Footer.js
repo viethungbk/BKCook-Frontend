@@ -182,41 +182,6 @@ class Footer extends React.Component {
               </div>
             </div>
           </div>
-          <div className="static-footer wide-box">
-            <div className="container">
-              <div className="intro-links top-list">
-                <div className="headline">
-                  <h3 className="title">Về Cooky.vn</h3>
-                </div>
-                <ul className="list-unstyled nomargin">
-                  <li><a href="/wiki" target="_blank"><span className="fa fa-angle-right" /> Wiki</a></li>
-                  <li><a href="/jobs" target="_blank"><span className="fa fa-angle-right" /> Jobs</a></li>
-                  <li><a href="/gioi-thieu" target="_blank"><span className="fa fa-angle-right" /> Giới thiệu</a></li>
-                  <li><a href="/gop-y" target="_blank"><span className="fa fa-angle-right" /> Góp ý</a></li>
-                  <li><a href="/lien-he" target="_blank"><span className="fa fa-angle-right" /> Liên hệ</a></li>
-                  <li><a href="/lien-he" target="_blank"><span className="fa fa-angle-right" /> Báo lỗi</a></li>
-                  <li><a href="/quen-mat-khau" target="_blank"><span className="fa fa-angle-right" /> Quên mật khẩu</a></li>
-                  <li><a href="/dang-ky" target="_blank"><span className="fa fa-angle-right" /> Đăng ký thành viên</a></li>
-                </ul>
-              </div>
-              <div className="top-list">
-                <div className="headline">
-                  <h3 className="caption-subject title bold uppercase center"> Tải ứng dụng nấu ăn Cooky</h3>
-                </div>
-                <div className="download-zone">
-                  <div className="downapp">
-                    <a target="_blank" href="https://itunes.apple.com/us/app/cooky/id1056621751" rel="nofollow">
-                      <img style={{ width: '120px', height: 'auto' }} alt="Cooky iOS app - Ứng dụng hướng dẫn nấu ăn ngon trên iOS" src="/imgs/MobileApp/appstore.png" data-pin-nopin="true" />
-                    </a>
-                    <a target="_blank" href="https://play.google.com/store/apps/details?id=vn.cooky.cooky" rel="nofollow">
-                      <img style={{ width: '120px', height: 'auto' }} alt="Cooky android app - Ứng dụng hướng dẫn nấu ăn ngon trên android" src="/imgs/MobileApp/googleplayx48.png" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="clearfix" style={{ backgroundColor: '#f4f4f4', padding: '10px 20px', fontSize: '12px' }}>
             <div className="container" style={{ position: 'relative' }}>
               <div className="nopadding" style={{ textAlign: 'center' }}>
