@@ -1,51 +1,69 @@
 import React from 'react';
-import Course from './Course';
+import ItemCourse from './ItemCourse';
+
+const listCourse = [
+  {
+    title: 'Công thức',
+    course: [
+      { name: 'Món khai vị', count: 3476 },
+      { name: 'Món tráng miệng', count: 3476 },
+      { name: 'Món chay', count: 3476 },
+      { name: 'Món chính', count: 3476 }
+    ]
+  },
+  {
+    title: 'Công thức',
+    course: [
+      { name: 'Món khai vị', count: 3476 },
+      { name: 'Món tráng miệng', count: 3476 },
+      { name: 'Món chay', count: 3476 },
+      { name: 'Món chính', count: 3476 }
+    ]
+  },
+  {
+    title: 'Công thức',
+    course: [
+      { name: 'Món khai vị', count: 3476 },
+      { name: 'Món tráng miệng', count: 3476 },
+      { name: 'Món chay', count: 3476 },
+      { name: 'Món chính', count: 3476 }
+    ]
+  },
+  {
+    title: 'Công thức',
+    course: [
+      { name: 'Món khai vị', count: 3476 },
+      { name: 'Món tráng miệng', count: 3476 },
+      { name: 'Món chay', count: 3476 },
+      { name: 'Món chính', count: 3476 }
+    ]
+  }
+];
 
 class ListCourse extends React.Component {
+  renderListCourse() {
+    return listCourse.map((item, key) => {
+      let { title, course } = item;
+      return (
+        <ItemCourse
+          key={key}
+          title={title}
+          course={course}
+        />
+      );
+    });
+  }
   render() {
     return (
-      <div className="top-course-list">
-        <div className="top-course-header">
-          <h3>Công thức</h3>
-        </div>
-        <div className="top-course-item">
-          <a href="/cach-lam/mon-khai-vi-c1" target="_blank" className="mon-khai-vi">
-            <span className="fa fa-folder-o text-gray" />
-            <span> Món khai vị </span>
-            <span className="text">(<span className="count">3473</span>)</span>
-          </a>
-        </div>
-        <div className="top-course-item">
-          <a href="/cach-lam/mon-trang-mieng-c2" target="_blank" className="mon-khai-vi">
-            <span className="fa fa-folder-o text-gray" />
-            <span> Món tráng miệng </span>
-            <span className="text">(<span className="count">4841</span>)</span>
-          </a>
-        </div>
-        <div className="top-course-item">
-          <a href="/cach-lam/mon-chay-c3" target="_blank" className="mon-khai-vi">
-            <span className="fa fa-folder-o text-gray" />
-            <span> Món chay </span>
-            <span className="text">(<span className="count">1084</span>)</span>
-          </a>
-        </div>
-        <div className="top-course-item">
-          <a href="/cach-lam/mon-chinh-c4" target="_blank" className="mon-khai-vi">
-            <span className="fa fa-folder-o text-gray" />
-            <span> Món chính </span>
-            <span className="text">(<span className="count">13405</span>)</span>
-          </a>
-        </div>
-        <div className="top-course-item">
-          <a href="/cach-lam" target="_blank" className="other">
-            Xem thêm
-                      <span className="text">
-              <span className="fa fa-angle-double-right" />
-            </span>
-          </a>
+      <div className="wide-box">
+        <div className="top-course-box">
+          <div className="container">
+            
+            {this.renderListCourse()}
+          </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
