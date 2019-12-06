@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+
 }
 
 .App-logo {
@@ -7,16 +8,35 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #b9cbee;
+}
+
+.App-body {
+  background-color: #E9EBEE;
 }
 
 .App-link {
   color: #09d3ac;
 }
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mt-100 {
+  margin-top: 80px !important;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.form-banner {
+  top: 21%;
+  left: 21%;
+  color: white;
+}
+
+/* .selected {
+  background-color: red;
+} */

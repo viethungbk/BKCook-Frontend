@@ -29,33 +29,32 @@ class ListClass extends React.Component {
     return listClass.map((elmClass, key) => {
       let { name, link, imageLink, location, time } = elmClass;
       return (
-          <ItemClass 
-            key={key}
-            name={name} 
-            link={link} 
-            imageLink={imageLink} 
-            location={location} 
-            time={time} 
-          />
-        );
+        <ItemClass
+          key={key}
+          name={name}
+          link={link}
+          imageLink={imageLink}
+          location={location}
+          time={time}
+        />
+      );
     });
   }
 
   render() {
     let { title, description } = this.props;
     return (
-      <div className="wide-box wide-box-white home-top-box">
-        <div className="container">
-          <div className="headline">
-            <h2>{title}</h2>
-            <span className="desc">{description}</span>
-          </div>
-          <div className="home-class">
-            <div className="class-list">
+      <div className="container mt-10">
+        <div className="card">
+          <div className="card-body">
+            <h3 className="card-title">{title}</h3>
+            <h6 className="card-subtitle mb-4 text-muted">{description}</h6>
+            <div className="card-deck">
               {this.renderListClass()}
             </div>
           </div>
         </div>
+
       </div>
     );
   }

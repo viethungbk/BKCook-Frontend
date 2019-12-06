@@ -5,32 +5,117 @@ import ListCourse from './footer/ListCourse';
 class Footer extends React.Component {
   render() {
     return (
-      <footer>
-        <div className="footer-inner">
-          <ListCourse />
-          <div className="clearfix" style={{backgroundColor: '#f4f4f4', padding: '10px 20px', fontSize: '12px'}}>
-            <div className="container" style={{position: 'relative'}}>
-              <div className="nopadding" style={{textAlign: 'center'}}>
-                <div className="privacy-links">
-                  <ul className="list-inline">
-                    <li><a href="/privacy" target="_blank"> Chính sách</a></li>
-                    <li><a href="/tro-giup/chinh-sach-diem-thuong" target="_blank"> Chính sách điểm</a></li>
-                    <li><a href="/terms" target="_blank"> Quy định sử dụng</a></li>
-                  </ul>
-                </div>
-                <div style={{paddingRight: '15px', color: '#777'}}>
-                  © 2019 Cooky.vn.
-                  <span>Giấy phép MXH 540/GP-BTTTT cấp ngày 01/11/2017 </span>
-                </div>
-                <div className="language-box" style={{position: 'absolute', bottom: '15px', left: 0}}>
-                  <a href="/common/setlanguage?langid=1&returnUrl=https://www.cooky.vn/" className="l-indicator current"><img className="flag img-responsive" src="/Content/img/icons/flags/VN.png" alt="vietnamese" rel="nofollow" /> Tiếng Việt</a>
-                  <a href="/common/setlanguage?langid=2&returnUrl=https://www.cooky.vn/" className="l-indicator"><img className="flag img-responsive" src="/Content/img/icons/flags/USA.png" alt="english" rel="nofollow" /> English</a>
-                </div>
+      <footer className="page-footer font-small mdb-color pt-4" style={{ backgroundColor: '#45526E', color: 'white' }}>
+        {/* Footer Links */}
+        <div className="container text-center text-md-left">
+          {/* Footer links */}
+          <div className="row text-center text-md-left mt-3 pb-3">
+            {/* Grid column */}
+            <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 className="text-uppercase mb-4 font-weight-bold">Company name</h6>
+              <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+                consectetur
+                adipisicing elit.</p>
+            </div>
+            {/* Grid column */}
+            <hr className="w-100 clearfix d-md-none" />
+            {/* Grid column */}
+            <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 className="text-uppercase mb-4 font-weight-bold">Products</h6>
+              <p>
+                <a href="#!">MDBootstrap</a>
+              </p>
+              <p>
+                <a href="#!">MDWordPress</a>
+              </p>
+              <p>
+                <a href="#!">BrandFlow</a>
+              </p>
+              <p>
+                <a href="#!">Bootstrap Angular</a>
+              </p>
+            </div>
+            {/* Grid column */}
+            <hr className="w-100 clearfix d-md-none" />
+            {/* Grid column */}
+            <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 className="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+              <p>
+                <a href="#!">Your Account</a>
+              </p>
+              <p>
+                <a href="#!">Become an Affiliate</a>
+              </p>
+              <p>
+                <a href="#!">Shipping Rates</a>
+              </p>
+              <p>
+                <a href="#!">Help</a>
+              </p>
+            </div>
+            {/* Grid column */}
+            <hr className="w-100 clearfix d-md-none" />
+            {/* Grid column */}
+            <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
+              <p>
+                <i className="fa fa-home mr-3" /> New York, NY 10012, US</p>
+              <p>
+                <i className="fa fa-envelope mr-3" /> info@gmail.com</p>
+              <p>
+                <i className="fa fa-phone mr-3" /> + 01 234 567 88</p>
+              <p>
+                <i className="fa fa-print mr-3" /> + 01 234 567 89</p>
+            </div>
+            {/* Grid column */}
+          </div>
+          {/* Footer links */}
+          <hr />
+          {/* Grid row */}
+          <div className="row d-flex align-items-center">
+            {/* Grid column */}
+            <div className="col-md-7 col-lg-8">
+              {/*Copyright*/}
+              <p className="text-center text-md-left">© 2018 Copyright:
+                <a href="https://mdbootstrap.com/education/bootstrap/">
+                  <strong> MDBootstrap.com</strong>
+                </a>
+              </p>
+            </div>
+            {/* Grid column */}
+            {/* Grid column */}
+            <div className="col-md-5 col-lg-4 ml-lg-0">
+              {/* Social buttons */}
+              <div className="text-center text-md-right">
+                <ul className="list-unstyled list-inline">
+                  <li className="list-inline-item">
+                    <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i className="fa fa-facebook-f" />
+                    </a>
+                  </li>
+                  <li className="list-inline-item">
+                    <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i className="fa fa-twitter" />
+                    </a>
+                  </li>
+                  <li className="list-inline-item">
+                    <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i className="fa fa-google-plus" />
+                    </a>
+                  </li>
+                  <li className="list-inline-item">
+                    <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i className="fa fa-linkedin" />
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
+            {/* Grid column */}
           </div>
+          {/* Grid row */}
         </div>
-        <div className="footer-overlay" />
+        {/* Footer Links */}
       </footer>
     );
   }
