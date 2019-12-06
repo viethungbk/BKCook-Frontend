@@ -19,11 +19,11 @@ class BlogDetailPageContainer extends React.Component {
 
         {/* form */}
         <form action="/action_page.php" className='mt-4 mb-4'>
-          <div class="form-group">
+          <div className="form-group">
             <label for="comment">Comment:</label>
-            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+            <textarea className="form-control" rows="5" id="comment" name="text"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </div>
 
