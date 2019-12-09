@@ -5,7 +5,6 @@ import { showListItem } from '../../../actions/function'
 class ListTopBlog extends React.Component {
   render() {
     let { title, topBlog } = this.props;
-    console.log(topBlog)
     return (
       <ul className="list-unstyled">
         {/* {this.renderListTop()} */}

@@ -1,6 +1,7 @@
-// post
-export const postAction = {
+// blog
+export const blogAction = {
   FETCH_POSTS: 'FETCH_POSTS',
+  FETCH_POST: 'FETCH_POST',
   ADD_POST: 'ADD_POST',
   UPDATE_POST: 'UPDATE_POST',
   DELETE_POST: 'DELETE_POST'

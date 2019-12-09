@@ -1,11 +1,6 @@
-import { postAction } from '../constants/ActionType';
+import { blogAction } from '../constants/ActionType';
 
-let initState = {
-  id: 1,
-  name: 'Blog name',
-  image: 'https://media.cooky.vn/article/s640/cooky-article-cover-b5212.jpg',
-  description: 'This is description'
-}
+let initState = {}
 
 const currentBlogReducer = (state = initState, action) => {
   switch (action.type) {

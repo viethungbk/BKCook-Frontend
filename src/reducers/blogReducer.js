@@ -1,49 +1,25 @@
-import { postAction } from '../constants/ActionType';
+import { blogAction } from '../constants/ActionType';
 
 let initState = {
-  totalBlog: 18,
-  currentBlog: [
-    {
-      id: 1,
-      name: 'Blog name',
-      image: 'https://media.cooky.vn/article/s640/cooky-article-cover-b5212.jpg',
-      description: 'blog description'
-    },
-    {
-      id: 2,
-      name: 'Blog name',
-      image: 'https://media.cooky.vn/article/s640/cooky-article-cover-b5212.jpg',
-      description: 'blog description'
-    },
-    {
-      id: 3,
-      name: 'Blog name',
-      image: 'https://media.cooky.vn/article/s640/cooky-article-cover-b5212.jpg',
-      description: 'blog description'
-    },
-    {
-      id: 4,
-      name: 'Blog name',
-      image: 'https://media.cooky.vn/article/s640/cooky-article-cover-b5212.jpg',
-      description: 'blog description'
-    },
-    {
-      id: 5,
-      name: 'Blog name',
-      image: 'https://media.cooky.vn/article/s640/cooky-article-cover-b5212.jpg',
-      description: 'blog description'
-    },
-    {
-      id: 6,
-      name: 'Blog name',
-      image: 'https://media.cooky.vn/article/s640/cooky-article-cover-b5212.jpg',
-      description: 'blog description'
-    }
-  ]
+  totalRecords: 0,
+  currentBlogs: [],
+  currentBlog: {}
 };
 
 const blogReducer = (state = initState, action) => {
   switch (action.type) {
+    case blogAction.FETCH_POST:
+      state = {
+        ...state,
+        currentBlog: state.currentBlogs.filter(blog => blog._id === action.blogId)[0]
+      }
+      return state;
+    case blogAction.FETCH_POSTS:
+      state = {
+        ...state,
+        ...action.data
+      }
+      return { ...state }
     default:
       return { ...state };
   }

@@ -11,6 +11,8 @@ const pages = [
 
 class BlogDetailPage extends React.Component {
   render() {
+    let { blogId } = this.props.match.params
+
     return (
       <div className='container mt-100'>
         <div className='row'>
@@ -21,7 +23,7 @@ class BlogDetailPage extends React.Component {
           <div className='col-md-8'>
             <h4>Blog</h4>
             <hr />
-            <BlogDetailPageContainer />
+            <BlogDetailPageContainer blogId={blogId} />
             {/* <ListBlog blogs={currentBlog} totalBlog={totalBlog} paginate={this.paginate} match={match} /> */}
           </div>
           <div className='col-md-4'>
