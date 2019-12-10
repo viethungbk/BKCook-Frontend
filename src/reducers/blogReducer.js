@@ -11,7 +11,7 @@ const blogReducer = (state = initState, action) => {
     case blogAction.FETCH_POST:
       state = {
         ...state,
-        currentBlog: state.currentBlogs.filter(blog => blog._id === action.blogId)[0]
+        currentBlog: state.currentBlogs.filter(blog => blog.url_key === action.url_key)[0]
       }
       return state;
     case blogAction.FETCH_POSTS:

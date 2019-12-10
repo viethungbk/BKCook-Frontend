@@ -5,6 +5,7 @@ import PostPage from './pages/list/PostPage';
 import ListRecipePage from './pages/list/ListRecipePage';
 import ListBlogPage from './pages/list/ListBlogPage';
 import BlogDetailPage from './pages/details/BlogDetailPage';
+import AuthorDetailPage from './pages/details/AuthorDetailPage'
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: '/recipe',
     exact: true,
     main: () => <ListRecipePage />
+  },
+  {
+    path: '/author/:authorId',
+    exact: true,
+    main: () => <AuthorDetailPage />
   },
   {
     path: '',

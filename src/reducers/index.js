@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import blogReducer from './blogReducer'
-import currentBlogReducer from './currentBlogReducer'
 import topBlogReducer from './topBlogReducer'
+import pageReducer from './pageReducer'
 
 const appReducers = combineReducers({
   blogReducer,
-  currentBlogReducer,
-  topBlogReducer
+  topBlogReducer,
+  pageReducer
 });
 
 export default appReducers

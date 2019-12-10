@@ -1,5 +1,5 @@
 import React from 'react';
-import ListCourse from './footer/ListCourse';
+// import ListCourse from './footer/ListCourse';
 
 
 class Footer extends React.Component {

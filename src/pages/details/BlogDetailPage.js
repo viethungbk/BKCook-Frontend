@@ -3,11 +3,7 @@ import Breadcrumbs from '../../components/container/Breadcrumbs'
 import SearchBlog from '../../components/container/blog/SearchBlog'
 import TopBlogContainer from '../../containers/blog/TopBlogContainer'
 import BlogDetailPageContainer from '../../containers/blog/BlogDetailPageContainer'
-
-const pages = [
-  { name: 'Home', url: '/' },
-  { name: 'Blog', url: '/blog' }
-]
+import BreadcrumbsContainer from '../../containers/BreadcrumbsContainer'
 
 class BlogDetailPage extends React.Component {
   render() {
@@ -16,7 +12,7 @@ class BlogDetailPage extends React.Component {
     return (
       <div className='container mt-100'>
         <div className='row'>
-          <Breadcrumbs pages={pages} />
+          <BreadcrumbsContainer />
         </div>
         <br />
         <div className='row'>

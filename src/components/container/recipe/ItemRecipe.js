@@ -1,27 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 
 class ItemRecipe extends React.Component {
-  renderAuthor(author) {
-    if (author === null) {
-      return '';
-    }
-
-    let { authorName, authorLink } = author;
-    return (
-      <div className="item-header">
-        <div className="hprofile">
-          <div className="profile">
-            <span className="postedby-text">
-              công thức bởi:
-                </span>
-            <a href={authorLink} className="name">{authorName}</a>
-          </div>
-        </div>
-      </div>
-    );
-  }
   render() {
-    let { name, link, imageLink, author, timeToDo, view, typeRecipe } = this.props.item;
+    let { name, imageLink, author, timeToDo, view } = this.props.item;
+    let { authorName } = author
+
     let { isShowFull } = this.props
     let class_name = isShowFull ? 'col-sm-12 col-md-6 col-lg-3' : 'col-sm-12 col-md-6 col-lg-6';
     return (
@@ -38,7 +22,7 @@ class ItemRecipe extends React.Component {
                 <span className='fa fa-bar-chart' />{view}
               </li>
             </ul>
-            <p>đăng bởi: <b><a href='#'>{author.authorName}</a></b></p>
+            <p>đăng bởi: <b><NavLink to={`/author/authorURLKEY`}>{author.authorName}</NavLink></b></p>
           </div>
         </div>
       </div>

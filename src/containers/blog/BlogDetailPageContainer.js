@@ -10,7 +10,6 @@ class BlogDetailPageContainer extends React.Component {
   }
   render() {
     let { currentBlog } = this.props
-    console.log(currentBlog)
     let { title, image, description } = currentBlog
     return (
       <div>

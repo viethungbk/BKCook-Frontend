@@ -8,8 +8,8 @@ class Breadcrumbs extends React.Component {
 
     if (isArray(pages) && pages.length > 0) {
       result = pages.map((page, index) => {
-        let { name, url } = page;
-        return <li key={index} className="breadcrumb-item"><NavLink to={url}>{name}</NavLink></li>
+        let { label, to } = page;
+        return <li key={index} className="breadcrumb-item"><NavLink to={to}>{label}</NavLink></li>
       })
     }
 

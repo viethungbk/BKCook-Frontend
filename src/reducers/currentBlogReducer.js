@@ -1,12 +1,12 @@
-import { blogAction } from '../constants/ActionType';
+// import { blogAction } from '../constants/ActionType';
 
-let initState = {}
+// let initState = {}
 
-const currentBlogReducer = (state = initState, action) => {
-  switch (action.type) {
-    default:
-      return { ...state }
-  }
-}
+// const currentBlogReducer = (state = initState, action) => {
+//   switch (action.type) {
+//     default:
+//       return { ...state }
+//   }
+// }
 
-export default currentBlogReducer
+// export default currentBlogReducer

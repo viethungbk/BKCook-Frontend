@@ -1,6 +1,7 @@
-import { blogAction } from '../constants/ActionType';
-import { ITEM_PER_PAGE } from '../constants/Config';
-import callApi from '../utils/apiCaller';
+import { blogAction } from '../constants/ActionType'
+import { ITEM_PER_PAGE } from '../constants/Config'
+import callApi from '../utils/apiCaller'
+import { convertToUrlKey } from '../actions/function'
 
 export const actFetchPostsRequest = (page = 1) => {
   return (dispatch) => {
@@ -8,6 +9,12 @@ export const actFetchPostsRequest = (page = 1) => {
       let { success, data } = res.data
       if (success) {
         let { blogs, totalRecords } = data
+        blogs = blogs.map(blog => {
+          return {
+            ...blog,
+            url_key: convertToUrlKey(blog.title, blog._id)
+          }
+        })
         dispatch(actFetchPosts(blogs, totalRecords))
       }
     })
@@ -24,9 +31,11 @@ export const actFetchPosts = (currentBlogs, totalRecords) => {
   }
 }
 
-export const actFetchPost = (blogId) => {
+export const actFetchPost = (url_key) => {
   return {
     type: blogAction.FETCH_POST,
-    blogId
+    url_key
   }
 }
+
+// export const actChangePage = ()

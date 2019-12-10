@@ -4,7 +4,7 @@ import { API_URL } from '../../../constants/Config'
 
 class ItemBlog extends React.Component {
   render() {
-    let { _id, title, image, description } = this.props.item;
+    let { _id, title, image, description, url_key } = this.props.item;
 
     return (
       <div className='col-sm-12 col-md-6 col-lg-4 mb-2'>
@@ -12,7 +12,7 @@ class ItemBlog extends React.Component {
           <img src={`${API_URL}${image}`} className="card-img-top" alt={title} />
           <div className="card-body">
             <h5 className="card-title">
-              <NavLink to={`/blog/${_id}`}>{title}</NavLink>
+              <NavLink to={`/blog/${url_key}`}>{title}</NavLink>
             </h5>
             <p className="card-text">{description}</p>
           </div>
