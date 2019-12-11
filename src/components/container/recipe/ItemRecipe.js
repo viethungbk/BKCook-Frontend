@@ -22,7 +22,7 @@ class ItemRecipe extends React.Component {
                 <span className='fa fa-bar-chart' />{view}
               </li>
             </ul>
-            <p>đăng bởi: <b><NavLink to={`/author/authorURLKEY`}>{author.authorName}</NavLink></b></p>
+            <p>đăng bởi: <b><NavLink to={`/author/authorURLKEY`}>{authorName}</NavLink></b></p>
           </div>
         </div>
       </div>

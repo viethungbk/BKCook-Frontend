@@ -1,26 +1,19 @@
 import React from 'react'
-import Breadcrumbs from '../../components/container/Breadcrumbs'
 import SearchBlog from '../../components/container/blog/SearchBlog'
 import TopBlogContainer from '../../containers/blog/TopBlogContainer'
 import BlogDetailPageContainer from '../../containers/blog/BlogDetailPageContainer'
-import BreadcrumbsContainer from '../../containers/BreadcrumbsContainer'
 
 class BlogDetailPage extends React.Component {
   render() {
     let { blogId } = this.props.match.params
+    console.log(blogId)
 
     return (
       <div className='container mt-100'>
-        <div className='row'>
-          <BreadcrumbsContainer />
-        </div>
-        <br />
-        <div className='row'>
+        <BlogDetailPageContainer blogId={blogId} />
+        {/* <div className='row'>
           <div className='col-md-8'>
-            <h4>Blog</h4>
-            <hr />
             <BlogDetailPageContainer blogId={blogId} />
-            {/* <ListBlog blogs={currentBlog} totalBlog={totalBlog} paginate={this.paginate} match={match} /> */}
           </div>
           <div className='col-md-4'>
             <h4>Bài viết nổi bật</h4>
@@ -29,7 +22,7 @@ class BlogDetailPage extends React.Component {
             <SearchBlog />
             <TopBlogContainer />
           </div>
-        </div>
+        </div> */}
       </div>
     )
   }

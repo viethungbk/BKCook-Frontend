@@ -19,12 +19,12 @@ const routes = [
     main: () => <PostPage />
   },
   {
-    path: '/blog',
+    path: '/blogs',
     exact: true,
     main: ({ match }) => <ListBlogPage match={match} />
   },
   {
-    path: '/blog/:blogId',
+    path: '/blogs/:blogId',
     exact: true,
     main: ({ match }) => <BlogDetailPage match={match} />
   },

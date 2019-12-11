@@ -9,6 +9,9 @@ class Breadcrumbs extends React.Component {
     if (isArray(pages) && pages.length > 0) {
       result = pages.map((page, index) => {
         let { label, to } = page;
+        if (index === pages.length - 1) {
+          return <li key={index} className="breadcrumb-item active" aria-current="page">{label}</li>
+        }
         return <li key={index} className="breadcrumb-item"><NavLink to={to}>{label}</NavLink></li>
       })
     }

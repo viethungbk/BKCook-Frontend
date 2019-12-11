@@ -14,7 +14,7 @@ export const MENUS = [
   },
   {
     name: 'Blog',
-    to: '/blog',
+    to: '/blogs',
     exact: true
   },
   {

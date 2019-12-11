@@ -4,6 +4,12 @@ import ListBlog from '../../components/container/blog/ListBlog'
 import SearchBlog from '../../components/container/blog/SearchBlog'
 import { actFetchPostsRequest } from '../../actions/index'
 import TopBlogContainer from './TopBlogContainer'
+import Breadcrumbs from '../../components/container/Breadcrumbs'
+
+const pages = [
+  { label: 'Home', to: '/' },
+  { label: 'Blog', to: '/blogs' }
+]
 
 class BlogContainer extends React.Component {
   componentDidMount() {
@@ -18,18 +24,23 @@ class BlogContainer extends React.Component {
     let { totalRecords, currentBlogs, topBlog } = blogReducer
 
     return (
-      <div className='row'>
-        <div className='col-md-8'>
-          <h4>Blog</h4>
-          <hr />
-          <ListBlog blogs={currentBlogs} totalBlog={totalRecords} paginate={this.paginate} match={match} />
+      <div>
+        <div className='row'>
+          <Breadcrumbs pages={pages} />
         </div>
-        <div className='col-md-4'>
-          <h4>Bài viết nổi bật</h4>
-          <hr />
-
-          <SearchBlog />
-          <TopBlogContainer topBlog={topBlog} />
+        <br />
+        <div className='row'>
+          <div className='col-md-8'>
+            <h4>Blog</h4>
+            <hr />
+            <ListBlog blogs={currentBlogs} totalBlog={totalRecords} paginate={this.paginate} match={match} />
+          </div>
+          <div className='col-md-4'>
+            <h4>Bài viết nổi bật</h4>
+            <hr />
+            <SearchBlog />
+            <TopBlogContainer topBlog={topBlog} />
+          </div>
         </div>
       </div>
     )

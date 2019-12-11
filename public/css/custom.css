@@ -1,145 +1,135 @@
-.slick-dots {
-    bottom: 10px !important;
-  }
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
 
-  .slick-dots li button:before {
-    content: '' !important;
-    background-color: #fff !important;
-    border-radius: 50% !important;
-    color: transparent !important;
-    height: 16px !important;
-    width: 16px !important;
-  }
+/* body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+} */
 
-  .slick-dots li.slick-active button:before {
-    color: transparent !important;
-  }
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
 
-  .header-shortcut-menu {
-    position: absolute;
-    top: 30px;
-    left: 0;
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.card-signin .card-body {
+  padding: 2rem;
+}
+
+.form-signin {
+  width: 100%;
+}
+
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+.btn-google {
+  color: white !important;
+  background-color: #ea4335 !important;
+}
+
+.btn-facebook {
+  color: white !important;
+  background-color: #3b5998 !important;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+
+@supports (-ms-ime-align: auto) {
+  .form-label-group>label {
     display: none;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: #fff;
-    border-radius: 6px;
-    border-top-left-radius: 0;
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
-    list-style: none;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-    z-index: 2051;
   }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
 
-  .header-shortcut-menu:hover+.menu-recipe-link,
-  .header-shortcut-menu:focus+.menu-recipe-link {
-    background-color: #c70808;
-    border-radius: 4px;
-    border-bottom-left-radius: 0;
-    color: #fff;
-  }
+/* Fallback for IE
+-------------------------------------------------- */
 
-  .header-shortcut-menu .col {
-    display: inline-block;
-    border-right: 1px solid #eee;
-    min-width: 140px;
-    padding: 4px 0 8px;
-    width: 100%;
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .form-label-group>label {
+    display: none;
   }
-
-  .header-shortcut-menu .col ul {
-    display: block;
-    font-size: 0;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
   }
-
-  .header-shortcut-menu .col li {
-    display: block;
-    font-size: 0;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
-
-  .header-shortcut-menu .col a,
-  .header-shortcut-menu .col .col-header {
-    display: block;
-    line-height: 28px;
-    padding: 0 20px !important;
-    text-decoration: none;
-    white-space: nowrap;
-    width: 100%;
-  }
-
-  .header-shortcut-menu .col a {
-    background-color: white !important;
-    color: #333 !important;
-    font-size: 12px;
-    font-weight: 300;
-  }
-
-  .header-shortcut-menu .col a:hover,
-  .header-shortcut-menu .col a:focus {
-    background-color: transparent !important;
-    color: #d43f3a !important;
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-  .header-shortcut-menu .col .col-header {
-    color: #000;
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .header-shortcut-menu .col .col-header:hover,
-  .header-shortcut-menu .col .col-header:focus {
-    cursor: default;
-  }
-
-  .menu-recipe:hover>.header-shortcut-menu {
-    display: flex !important;
-  }
-
-  .menu-recipe:hover>.menu-recipe-link {
-    border-bottom-left-radius: 0 !important;
-  }
-
-  .right-button-banner {
-    max-height: 64px;
-    max-width: 192px;
-    overflow: hidden;
-    margin-bottom: 5px;
-    opacity: 0;
-    visibility: hidden;
-    transition: visibility 0s linear 300ms, opacity 300ms;
-    position: relative;
-    top: -4px;
-  }
-
-  .right-button-banner.show {
-    opacity: 1;
-    visibility: visible;
-    transition: visibility 0s linear 300ms, opacity 300ms;
-  }
-
-  .right-button-banner .slick-slide {
-    float: right;
-  }
-
-  .right-button-banner .slick-slide img {
-    height: 40px;
-    margin-top: 0 !important;
-  }
-
-  .right-button-banner img {
-    border-radius: 4px;
-    height: 40px;
-    margin-top: -5px;
-  }
+}

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 class ItemTopBlog extends React.Component {
   render() {
-    let { id, name, link, image, description } = this.props.item
+    let { id, name, image, description } = this.props.item
     return (
       <li className="media my-4">
         <img src={image} className="mr-3 img-rounded" alt={name} />

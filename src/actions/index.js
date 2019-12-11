@@ -31,11 +31,21 @@ export const actFetchPosts = (currentBlogs, totalRecords) => {
   }
 }
 
-export const actFetchPost = (url_key) => {
-  return {
-    type: blogAction.FETCH_POST,
-    url_key
+export const actFetchPostRequest = (_id) => {
+  return (dispatch) => {
+    return callApi(`api/blogs/id?id=${_id}`, 'GET', null).then(res => {
+      let { success, data } = res.data
+      console.log(res.data)
+      if (success) {
+        dispatch(actFetchPost(data))
+      }
+    })
   }
 }
 
-// export const actChangePage = ()
+export const actFetchPost = (post) => {
+  return {
+    type: blogAction.FETCH_POST,
+    post
+  }
+}

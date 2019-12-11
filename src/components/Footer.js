@@ -77,8 +77,8 @@ class Footer extends React.Component {
             <div className="col-md-7 col-lg-8">
               {/*Copyright*/}
               <p className="text-center text-md-left">© 2018 Copyright:
-                <a href="https://mdbootstrap.com/education/bootstrap/">
-                  <strong> MDBootstrap.com</strong>
+                <a href="#">
+                  <strong> BKCook.com</strong>
                 </a>
               </p>
             </div>
