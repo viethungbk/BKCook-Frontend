@@ -13,15 +13,14 @@ function login(email, password) {
     dispatch(request({ email }))
     userService.login(email, password).then(response => {
       let { success: statusSuccess, data } = response
-      // console.log(response)
       if (statusSuccess) {
         let { user } = data
-        // console.log(user)
         dispatch(success(user))
+        dispatch(alertActions.clear())
+
         dispatch(alertActions.success('Đăng nhập thành công'))
       } else {
         let { message } = data
-        // console.log(message)
         dispatch(failure(message))
         dispatch(alertActions.error(message))
       }
@@ -35,9 +34,9 @@ function login(email, password) {
 
 function logout() {
   return dispatch => {
-    console.log('userActions')
     userService.logout()
 
+    dispatch(alertActions.clear())
     dispatch(alertActions.success('Đăng xuất thành công'))
     dispatch(success())
   }
@@ -50,14 +49,17 @@ function register(user) {
     dispatch(request(user))
     userService.register(user).then(response => {
       let { success: statusSuccess, data } = response
-      console.log(response)
       if (statusSuccess) {
         let { user } = data
+
         dispatch(success(user))
+        dispatch(alertActions.clear())
         dispatch(alertActions.success('Đăng ký thành công'))
       } else {
         let { message } = data
+
         dispatch(failure(message))
+        dispatch(alertActions.clear())
         dispatch(alertActions.error(message))
       }
     })

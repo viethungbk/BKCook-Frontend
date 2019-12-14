@@ -2,7 +2,7 @@ import { userConstants } from '../constants/userConstants'
 
 let user = JSON.parse(localStorage.getItem('user'))
 // let initState = user ? { loggedIn: true, user } : {}
-let initState = {}
+let initState = user ? { loggedIn: true, user } : {}
 
 const authenticationReducer = (state = initState, action) => {
   switch (action.type) {

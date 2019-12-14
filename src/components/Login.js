@@ -64,9 +64,6 @@ class Login extends React.Component {
               {
                 loggedIn && <Redirect to='/' />
               }
-              <div className={`alert ${type} mt-2`} role="alert">
-                {message}
-              </div>
 
             </div>
             <div className="col-md-12 ">

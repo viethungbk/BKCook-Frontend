@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 import { userActions } from '../../actions/userActions'
 
 const Account = (props) => {
-  let { user, handleLogout } = props
-  let { userName } = user
+  let { handleLogout } = props
+  let { userName } = JSON.parse(localStorage.getItem('user'))
+  console.log(userName)
   return (
     <div className="dropdown">
       <Link className="btn btn-outline-success mr-2" to='/recipe/add'>Đăng công thức</Link>
@@ -34,8 +35,7 @@ class AccountContainer extends React.Component {
   }
 
   handleLogout() {
-    console.log('logout')
-    console.log(this.props.logout())
+    this.props.logout()
   }
   render() {
     let { user } = this.props
