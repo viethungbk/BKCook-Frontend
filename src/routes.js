@@ -1,13 +1,14 @@
-import React from 'react';
-import HomePage from './pages/HomePage';
-import NotFoundPage from './pages/NotFoundPage';
-import PostPage from './pages/list/PostPage';
-import ListRecipePage from './pages/list/ListRecipePage';
-import ListBlogPage from './pages/list/ListBlogPage';
-import BlogDetailPage from './pages/details/BlogDetailPage';
+import React from 'react'
+import HomePage from './pages/HomePage'
+import NotFoundPage from './pages/NotFoundPage'
+import PostPage from './pages/list/PostPage'
+import ListRecipePage from './pages/list/ListRecipePage'
+import ListBlogPage from './pages/list/ListBlogPage'
+import BlogDetailPage from './pages/details/BlogDetailPage'
 import AuthorDetailPage from './pages/details/AuthorDetailPage'
-import RegisterPage from './pages/RegisterPage';
-import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage'
+import LoginPage from './pages/LoginPage'
+import AddBasicInfo from './pages/recipe/AddBasicInfo'
 
 const routes = [
   {
@@ -49,6 +50,11 @@ const routes = [
     path: '/register',
     exact: true,
     main: () => <RegisterPage />
+  },
+  {
+    path: '/recipe/add/',
+    exact: true,
+    main: () => <AddBasicInfo />
   },
   {
     path: '',

@@ -16,8 +16,9 @@ function login(email, password) {
     'POST',
     body
   ).then(res => {
-    let { user } = res.data.data
+    let { user, token } = res.data.data
     localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('token', token)
     return res.data
   }).catch(err => {
     return err.response.data
@@ -25,8 +26,8 @@ function login(email, password) {
 }
 
 function logout() {
-  console.log('userServices')
   localStorage.removeItem('user')
+  localStorage.removeItem('token')
 }
 
 function register(user) {

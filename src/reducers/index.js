@@ -5,6 +5,7 @@ import currentBlogReducer from './currentBlogReducer'
 import authenticationReducer from './authenticationReducer'
 import alertReducer from './alertReducer'
 import registrationReducer from './registrationReducer'
+import recipeReducer from './recipeReducer'
 
 const appReducers = combineReducers({
   blogReducer,
@@ -12,7 +13,8 @@ const appReducers = combineReducers({
   currentBlogReducer,
   authenticationReducer,
   alertReducer,
-  registrationReducer
+  registrationReducer,
+  recipeReducer
 })
 
 export default appReducers
