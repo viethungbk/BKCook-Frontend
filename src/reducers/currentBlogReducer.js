@@ -1,16 +1,11 @@
-import { blogAction } from '../constants/ActionType';
+import { blogConstants } from '../constants/blogConstants';
 
 let initState = {}
 
 const currentBlogReducer = (state = initState, action) => {
   switch (action.type) {
-    case blogAction.FETCH_POST:
-      state = {
-        ...state,
-        ...action.post
-      }
-
-      return state
+    case blogConstants.FETCH_BLOG:
+      return { ...state, ...action.blog }
     default:
       return { ...state }
   }

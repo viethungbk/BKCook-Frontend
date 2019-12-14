@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ListBlog from '../../components/container/blog/ListBlog'
 import SearchBlog from '../../components/container/blog/SearchBlog'
-import { actFetchPostsRequest } from '../../actions/index'
 import TopBlogContainer from './TopBlogContainer'
 import Breadcrumbs from '../../components/container/Breadcrumbs'
+import { blogActions } from '../../actions/blogActions'
 
 const pages = [
   { label: 'Home', to: '/' },
@@ -13,7 +13,8 @@ const pages = [
 
 class BlogContainer extends React.Component {
   componentDidMount() {
-    this.props.fetchCurrentBlog()
+    // this.props.fetchCurrentBlog()
+    this.props.fetchBlogs()
   }
   paginate = (page) => {
     console.log(page)
@@ -21,7 +22,7 @@ class BlogContainer extends React.Component {
   }
   render() {
     let { blogReducer, match } = this.props
-    let { totalRecords, currentBlogs, topBlog } = blogReducer
+    let { totalRecords, blogs, topBlog } = blogReducer
 
     return (
       <div>
@@ -33,7 +34,7 @@ class BlogContainer extends React.Component {
           <div className='col-md-8'>
             <h4>Blog</h4>
             <hr />
-            <ListBlog blogs={currentBlogs} totalBlog={totalRecords} paginate={this.paginate} match={match} />
+            <ListBlog blogs={blogs} totalBlog={totalRecords} paginate={this.paginate} match={match} />
           </div>
           <div className='col-md-4'>
             <h4>Bài viết nổi bật</h4>
@@ -55,8 +56,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispath, props) => {
   return {
-    fetchCurrentBlog: (page) => {
-      dispath(actFetchPostsRequest(page))
+    fetchBlogs: page => {
+      dispath(blogActions.fetchBlogs(page))
     }
   }
 }

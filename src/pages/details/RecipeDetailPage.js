@@ -1,11 +1,12 @@
 import React from 'react';
+import Layout from '../../components/Layout';
 
 class RecipeDetailPage extends React.Component {
   render() {
     return (
-      <div>
+      <Layout>
         <h1>This is recipe detail page</h1>
-      </div>
+      </Layout>
     )
   }
 }

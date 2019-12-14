@@ -1,0 +1,5 @@
+export const blogConstants = {
+  FETCH_ALL_BLOG: 'FETCH_ALL_BLOG',
+  FETCH_BLOGS: 'FETCH_BLOGS',
+  FETCH_BLOG: 'FETCH_BLOG'
+}

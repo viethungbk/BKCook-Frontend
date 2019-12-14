@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { API_URL } from '../../constants/Config'
 import Breadcrumbs from '../../components/container/Breadcrumbs'
-import { actFetchPostRequest } from '../../actions/index'
 import SearchBlog from '../../components/container/blog/SearchBlog'
 import TopBlogContainer from './TopBlogContainer'
+import { blogActions } from '../../actions/blogActions'
 
 class BlogDetailPageContainer extends React.Component {
   componentDidMount() {
@@ -72,7 +72,7 @@ const mapStateToProps = state => {
 const mapDispathToProps = (dispatch, props) => {
   return {
     fetchBlog: (_id) => {
-      dispatch(actFetchPostRequest(_id))
+      dispatch(blogActions.fetchBlog(_id))
     }
   }
 }

@@ -6,8 +6,6 @@ const callAPI = (endPoint, method = 'GET', body = null) => {
     method: method,
     url: `${API_URL}/${endPoint}`,
     data: body
-  }).catch(err => {
-    console.log(err);
   })
 }
 

@@ -1,28 +1,18 @@
-import { blogAction } from '../constants/ActionType';
+import { blogConstants } from '../constants/blogConstants'
 
 let initState = {
   totalRecords: 0,
-  currentBlogs: [],
-  currentBlog: {}
-};
+  blogs: []
+}
 
 const blogReducer = (state = initState, action) => {
   switch (action.type) {
-    case blogAction.FETCH_POST:
-      state = {
-        ...state,
-        currentBlog: state.currentBlogs.filter(blog => blog.url_key === action.url_key)[0]
-      }
-      return state;
-    case blogAction.FETCH_POSTS:
-      state = {
-        ...state,
-        ...action.data
-      }
-      return { ...state }
+    case blogConstants.FETCH_BLOGS:
+      let { totalRecords, blogs } = action
+      return { ...state, totalRecords, blogs }
     default:
-      return { ...state };
+      return state
   }
 }
 
-export default blogReducer;
+export default blogReducer
