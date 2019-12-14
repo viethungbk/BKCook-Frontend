@@ -6,7 +6,7 @@ import { NavItem, NavLink } from "shards-react";
 const SidebarNavItem = ({ item }) => (
   <NavItem>
     <NavLink tag={RouteNavLink} to={item.to}
-      style={{ fontSize: '20px' }}
+      style={{ fontSize: '15px' }}
     >
       {item.htmlBefore && (
         <div
@@ -22,8 +22,9 @@ const SidebarNavItem = ({ item }) => (
           dangerouslySetInnerHTML={{ __html: item.htmlAfter }}
         />
       )}
+
     </NavLink>
-  </NavItem >
+  </NavItem>
 );
 
 SidebarNavItem.propTypes = {

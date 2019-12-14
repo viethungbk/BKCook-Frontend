@@ -8,6 +8,7 @@ import {
   Card,
   CardBody,
   CardFooter,
+  CardHeader,
   Badge,
   Button
 } from "shards-react";
@@ -28,34 +29,35 @@ class RecipeList extends Component {
                 <thead className="bg-light">
                   <tr>
                     <th scope="col" className="border-0">
-                      id
+                      Số thứ tự
                   </th>
                     <th scope="col" className="border-0">
-                      Name Recipe
+                      Tên công thức
                   </th>
                     <th scope="col" className="border-0">
-                      Author
+                      Miêu tả công thức
                   </th>
                     <th scope="col" className="border-0">
                       Image
                   </th>
                     <th scope="col" className="border-0">
-                      Recipe's Material
+                      Nguyên liệu
                   </th>
                     <th scope="col" className="border-0">
-                      Create Date
+                      Ngày tạo
                   </th>
                     <th scope="col" className="border-0">
-                      Status
+                      Trạng thái
                   </th>
                     <th scope="col" className="border-0">
-                      Action
+                      Độ khó
                   </th>
                   </tr>
                 </thead>
-                <RecipeItem>
+                <tbody>
                   {this.props.children}
-                </RecipeItem>
+                </tbody>
+
               </table>
             </CardBody>
           </Card>
@@ -64,6 +66,4 @@ class RecipeList extends Component {
     )
   }
 };
-
-
 export default RecipeList;

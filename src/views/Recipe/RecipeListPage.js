@@ -13,33 +13,39 @@ import axios from 'axios';
 import PageTitle from "../../components/common/PageTitle";
 import callApi from "./../../utils/apiCaller";
 import RecipeItem from "../../components/recipe/RecipeItem";
+import RecipeList from "../../components/recipe/RecipeList";
 
 class RecipeListPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: []
+      recipes: [],
     };
   }
   componentDidMount() {
-    callApi('', 'GET', null).then(res => {
-      console.log(res.data)
+    callApi('recipes/filter?tags=&typeRecipe=&level=1&processingMethod=&purpose=&countryCuisine&typeOfDish&season', 'GET', null).then(res => {
       this.setState({
-        recipes: res.data.data.blogs
+        recipes: res.data.data.recipes
       });
     });
-
   }
+
   render() {
-    var { blogs } = this.state;
+    var { recipes, categorys } = this.state;
     return (
       <Container fluid className="main-content-container px-4">
         <Row noGutters className="page-header" style={{ margin: '0px', padding: '20px' }}>
           <PageTitle title="Danh sách công thức" subtitle="recipe" className="text-sm-left mb-3" />
         </Row>
-        <RecipeList>
-          {this.showRecipes(recipes)}
-        </RecipeList>
+        <Row>
+          <Col>
+            <Card small className="mb-4">
+              <RecipeList>
+                {this.showRecipes(recipes)}
+              </RecipeList>
+            </Card>
+          </Col>
+        </Row>
       </Container>
 
     );

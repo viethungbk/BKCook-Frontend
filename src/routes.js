@@ -12,7 +12,8 @@ import Errors from "./views/Errors";
 import ComponentsOverview from "./views/ComponentsOverview";
 import Tables from "./views/Tables";
 import BlogPosts from "./views/BlogPosts";
-import Recipe from "./views/Recipe";
+import RecipeListPage from "./views/Recipe/RecipeListPage";
+import CategoryPage from "./views/Recipe/CategoryPage";
 import RecipeDetail from "./views/Recipe/RecipeDetail";
 import RecipeAdd from "./views/Recipe/RecipeAdd";
 import ListUsers from "./views/user/ListUsers";
@@ -41,7 +42,12 @@ export default [
   {
     path: "/recipe",
     layout: DefaultLayout,
-    component: Recipe
+    component: CategoryPage
+  },
+  {
+    path: "/recipeList/1",
+    layout: DefaultLayout,
+    component: RecipeListPage
   },
   {
     path: "/recipeDetail",

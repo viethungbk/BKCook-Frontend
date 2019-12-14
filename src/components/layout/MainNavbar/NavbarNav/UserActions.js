@@ -33,7 +33,7 @@ export default class UserActions extends React.Component {
         <DropdownToggle caret tag={NavLink} className="text-nowrap px-3" style={{ top: '10px' }}>
           <img
             className="user-avatar rounded-circle mr-2"
-            src="#"
+            src={require("../../../../images/avatars/1.jpg")}
             alt="User Avatar"
             style={{ marginTop: '10px' }}
           />{" "}

@@ -7,28 +7,28 @@ export default function () {
       htmlAfter: ""
     },
     {
-      title: "Công thức",
+      title: "Quản lý công thức",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
       to: "/recipe",
     },
     {
-      title: "Bài viết",
+      title: "Quản lý bài viết",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
       to: "/listBlog",
     },
 
     {
-      title: "Lớp học",
+      title: "Quản lý lớp học",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
       to: "/listClasses",
     },
     {
-      title: "Người dùng",
+      title: "Quản lý người dùng",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
       to: "/listUsers",
     },
     {
-      title: "Nhà hàng",
+      title: "Quản lý nhà hàng",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
       to: "/restaurant",
     },

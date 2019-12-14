@@ -3,7 +3,6 @@ import { Nav } from "shards-react";
 
 import SidebarNavItem from "./SidebarNavItem";
 import { Store } from "../../../flux";
-import "./SidebarNavItems.css";
 
 class SidebarNavItems extends React.Component {
   constructor(props) {

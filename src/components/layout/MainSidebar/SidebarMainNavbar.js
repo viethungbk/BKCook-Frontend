@@ -34,16 +34,10 @@ class SidebarMainNavbar extends React.Component {
               <img
                 id="main-logo"
                 className="d-inline-block align-top mr-1"
-                style={{ maxWidth: "30px" }}
-                src="#"
+                style={{ width: "90px" }}
+                src={require("../../../images/logo.png")}
                 alt="BKCOOK"
               />
-              {!hideLogoText && (
-                <span className="d-none d-md-inline ml-1"
-                  style={{ paddingLeft: '25px' }}>
-                  BKCOOK
-                </span>
-              )}
             </div>
           </NavbarBrand>
           {/* eslint-disable-next-line */}

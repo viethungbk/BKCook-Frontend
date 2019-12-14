@@ -16,7 +16,7 @@ const MainNavbar = ({ layout, stickyTop }) => {
 
   return (
     <div className={classes}>
-      <Navbar type="light" className="flex-row" style={{ padding: '0', height: '70px', marginBottom: '0px' }}>
+      <Navbar type="light" className="flex-row" style={{ padding: '0', height: '70px', marginBottom: '0px', position: 'relative' }}>
         <NavbarSearch />
         <NavbarNav />
       </Navbar>

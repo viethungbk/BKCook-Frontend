@@ -25,7 +25,7 @@ export default class Notifications extends React.Component {
           className="nav-link-icon text-center"
           onClick={this.toggleNotifications}
         >
-          <div className="nav-link-icon__wrapper" style={{ top: '-15px', paddingLeft: '10px', paddingRight: '10px' }}>
+          <div className="nav-link-icon__wrapper" style={{ paddingLeft: '10px', paddingRight: '10px' }}>
             <i className="material-icons">&#xE7F4;</i>
             <Badge pill theme="danger">
               2

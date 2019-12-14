@@ -41,7 +41,7 @@ class BlogItem extends Component {
           	</Button>
 					</CardBody>
 				</Card>
-			</Col >
+			</Col>
 		)
 	}
 }
