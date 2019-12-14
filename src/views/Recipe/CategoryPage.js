@@ -98,13 +98,15 @@ class CategoryPage extends React.Component {
           <PageTitle title="Danh sách công thức" subtitle="recipe" className="text-sm-left mb-3" />
         </Row>
         <Row style={{ padding: '15px' }}>
-          {categorys.map(({image, catName}, index) => {
-            // console.log(cat.image);
-            // const {image} = cat;
+          {categorys.map((cat, index) => {
             console.log(image);
+            const {image, catName} = cat;
             return (<div className="recommend-cuisine-box row10" style={{ background: 'white', padding: '10px', borderRadius: '15px', width: '15%', marginRight: '20px', marginBottom: '20px' }} key={index}>
+              <img className="ico"
+                src="#"
+                style={{ width: '36px', height: '36px', borderRadius: '10px', marginLeft: '45px' }} />
               <br></br>
-              <p className="text-center" style={{ margin: '5px' }}>{catName}</p>
+              <p className="text-center" style={{ margin: '5px' }}>cat.catName</p>
             </div>)
             
           })}
