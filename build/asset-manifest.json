@@ -1,0 +1,19 @@
+{
+  "main.css": "./static/css/main.265e06b6.chunk.css",
+  "main.js": "./static/js/main.28a76aba.chunk.js",
+  "main.js.map": "./static/js/main.28a76aba.chunk.js.map",
+  "static/css/1.aff49001.chunk.css": "./static/css/1.aff49001.chunk.css",
+  "static/js/1.28ceac1b.chunk.js": "./static/js/1.28ceac1b.chunk.js",
+  "static/js/1.28ceac1b.chunk.js.map": "./static/js/1.28ceac1b.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.4a686d48.js",
+  "runtime~main.js.map": "./static/js/runtime~main.4a686d48.js.map",
+  "static/media/logo.png": "./static/media/logo.8e2b08f1.png",
+  "static/media/admin.jpg": "./static/media/admin.cd896c67.jpg",
+  "static/media/bootstrap.min.css": "./static/media/glyphicons-halflings-regular.89889688.svg",
+  "static/media/adminpage.jpg": "./static/media/adminpage.8a17082d.jpg",
+  "static/css/1.aff49001.chunk.css.map": "./static/css/1.aff49001.chunk.css.map",
+  "static/css/main.265e06b6.chunk.css.map": "./static/css/main.265e06b6.chunk.css.map",
+  "index.html": "./index.html",
+  "precache-manifest.1ec25be7522059e933570c554a9234ef.js": "./precache-manifest.1ec25be7522059e933570c554a9234ef.js",
+  "service-worker.js": "./service-worker.js"
+}
