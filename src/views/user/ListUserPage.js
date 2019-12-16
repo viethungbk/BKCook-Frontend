@@ -13,8 +13,9 @@ class ListUserPage extends React.Component {
     };
   }
   componentDidMount() {
-    callApi("users", "GET", null).then(res => {
+    callApi("users/all", "GET", null).then(res => {
       // console.log(res.data);
+      console.log(res);
       this.setState({
         users: res.data.data
       });

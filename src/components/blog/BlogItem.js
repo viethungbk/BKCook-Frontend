@@ -33,7 +33,7 @@ class BlogItem extends Component {
                 }}
               >
                 <Link
-                  to={`/detailBlog?id=${blog._id}`}
+                  to={`/editBlog?id=${blog._id}`}
                   style={{ color: "white" }}
                 >
                   Chi tiết

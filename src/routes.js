@@ -26,6 +26,7 @@ import LoginPage from "./views/loginPage";
 import DetailBlog from "./views/blog/DetailBlog";
 import AddBlogPage from "./views/blog/AddBlogPage";
 import ListRestaurant from "./views/restaurant/ListRestaurant";
+import EditBlogPage from "./views/blog/EditBlogPage";
 
 const routes = [
   {
@@ -124,12 +125,19 @@ const routes = [
   {
     path: "/detailBlog",
     layout: DefaultLayout,
-    component: ({ location }) => <DetailBlog history={location} />
+    component: ({ location, history }) => (
+      <DetailBlog history={history} location={location} />
+    )
   },
   {
     path: "/addBlog",
     layout: DefaultLayout,
     component: AddBlogPage
+  },
+  {
+    path: "/editBlog",
+    layout: DefaultLayout,
+    component: ({ location }) => <EditBlogPage location={location} />
   },
   {
     path: "/restaurant",

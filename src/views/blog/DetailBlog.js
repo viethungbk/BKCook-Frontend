@@ -15,15 +15,8 @@ class DetailBlog extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.history.search);
-    const search = queryString.parse(this.props.history.search);
+    const search = queryString.parse(this.props.location.search);
     callApi(`blogs/id?id=${search.id}`, "GET", null).then(res => {
-      // console.log("aaa", res.data);
-      // var { data } = res.data;
-      // let recipe = null;
-      // if (data) {
-      //     recipe = data;
-      // }
       this.setState({
         blog: res.data.data || null
       });
@@ -31,8 +24,8 @@ class DetailBlog extends React.Component {
   }
 
   render() {
+    let { history } = this.props;
     var { blog } = this.state;
-    console.log(blog);
     if (!blog) {
       return <div></div>;
     }
@@ -50,7 +43,7 @@ class DetailBlog extends React.Component {
           />
         </Row>
         <Row style={{ margin: "10px", padding: "15px" }}>
-          <BlogDetailItem blog={blog} />
+          <BlogDetailItem blog={blog} history={history} />
         </Row>
       </Container>
     );

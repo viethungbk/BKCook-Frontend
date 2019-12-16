@@ -15,7 +15,7 @@ class UserItem extends Component {
             theme="danger"
             style={{ width: "60px", margin: "5px", padding: "5px" }}
           >
-            Xóa
+            Chặn
           </Button>
         </td>
       </tr>

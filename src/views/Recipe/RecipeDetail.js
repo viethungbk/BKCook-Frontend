@@ -33,7 +33,7 @@ class RecipeDetail extends React.Component {
     var { history } = this.props;
     if (confirm("Bạn chắc chắn muốn xóa ?")) {
       /* eslint no-restricted-globals:0 */
-      callApi(`recipes/${id}`, "DELETE", { idRecipe: `${id}` }).then(res => {
+      callApi("recipes/id", "DELETE", { idRecipe: id }).then(res => {
         if (res.status === 200) {
           //
           history.push("/recipeList");

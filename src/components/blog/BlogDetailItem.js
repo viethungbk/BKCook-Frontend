@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { Card, CardHeader, Button } from "shards-react";
+import { Link } from "react-router-dom";
+import callApi from "../../utils/apiCaller";
 class BlogDetailItem extends Component {
   onDelete = id => {
     if (confirm("Bạn chắc chắn muốn xóa ?")) {
       /* eslint no-restricted-globals:0 */
-      /*callApi(`blog/${id}`, "DELETE", null).then(res => {
+      callApi("blogs/id", "DELETE", { id: id }).then(res => {
         if (res.status === 200) {
-          this.setState({
-            recipes: [...recipes]
-          });
+          history.push("/listBlog");
         }
-      });*/
+      });
     }
   };
   render() {
-    var { blog } = this.props;
+    var { blog, history } = this.props;
     const { _id, title, content, video, image } = blog;
     return (
       <Card small className="mb-4 pt-3">
@@ -31,7 +31,7 @@ class BlogDetailItem extends Component {
           </div>
           Link video:
           <a href={video}>{video}</a>
-          <p style={{ margin: "30px" }}>{content}</p>
+          <p style={{ margin: "justify" }}>{content}</p>
           <Button
             theme="danger"
             style={{ width: "60px", margin: "5px", padding: "5px" }}
@@ -43,7 +43,9 @@ class BlogDetailItem extends Component {
             theme="warning"
             style={{ width: "60px", margin: "5px", padding: "5px" }}
           >
-            Chỉnh sửa
+            <Link to={`blogEdit/?id=`} style={{ color: "white" }}>
+              Chỉnh sửa
+            </Link>
           </Button>
         </CardHeader>
       </Card>

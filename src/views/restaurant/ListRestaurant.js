@@ -28,7 +28,7 @@ class ListRestaurant extends React.Component {
       Authorization: `Bearer ${accessToken}`,
       "Content-Type": "multipart/form-data"
     };
-    callApi("restaurants/", "GET", null, headers).then(res => {
+    callApi("restaurants/all", "GET", null, headers).then(res => {
       console.log(res);
       if (res) {
         this.setState({
@@ -93,7 +93,10 @@ class ListRestaurant extends React.Component {
                         Số thứ tự
                       </th>
                       <th scope="col" className="border-0">
-                        tên nhà hàng
+                        Tên nhà hàng
+                      </th>
+                      <th scope="col" className="border-0">
+                        Hình ảnh
                       </th>
                       <th scope="col" className="border-0">
                         Email
@@ -108,11 +111,17 @@ class ListRestaurant extends React.Component {
                   </thead>
                   <tbody>
                     {restaurants.map((restaurant, index) => {
-                      const { name, email, address, phone } = restaurant;
+                      const { name, email, address, phone, image } = restaurant;
                       return (
                         <tr>
                           <td>{index + 1}</td>
                           <td>{name}</td>
+                          <td>
+                            <img
+                              src={`http://202.191.56.159:2900/${image}`}
+                              style={{ width: "250px" }}
+                            ></img>
+                          </td>
                           <td>{email}</td>
                           <td>{address}</td>
                           <td>{phone}</td>
@@ -125,7 +134,7 @@ class ListRestaurant extends React.Component {
                                 padding: "5px"
                               }}
                             >
-                              Xóa
+                              Chặn
                             </Button>
                           </td>
                         </tr>

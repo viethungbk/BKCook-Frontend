@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import ReadMoreReact from "read-more-react";
 import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardHeader,
-  CardBody,
   Button
 } from "shards-react";
 import Material from "./Material";
@@ -63,7 +55,9 @@ class RecipeItem extends Component {
         <td>{index + 1}</td>
         <td>{recipe.title}</td>
 
-        <td style={{ width: "30%" }}>{recipe.shortDescription}</td>
+        <td style={{ width: "30%", margin: "justify" }}>
+          {recipe.shortDescription}
+        </td>
         <td>
           <img
             src={`http://202.191.56.159:2900/${recipe.image}`}

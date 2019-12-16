@@ -30,7 +30,7 @@ class RecipeListPage extends React.Component {
   }
   onDelete = id => {
     var { recipes } = this.state;
-    callApi(`recipes/${id}`, "DELETE", null).then(res => {
+    callApi("recipes/id", "DELETE", { idRecipe: id }).then(res => {
       if (res.status === 200) {
         var index = this.findIndex(recipes, id);
         if (index !== -1) {
