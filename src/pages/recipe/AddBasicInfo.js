@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Layout from '../../components/Layout'
 import { recipeActions } from '../../actions/recipeActions'
+import Loading from '../../components/Loading'
 
 class AddBasicInfo extends React.Component {
   constructor(props) {
@@ -24,20 +25,18 @@ class AddBasicInfo extends React.Component {
     this.setState({ [name]: value })
   }
   handleChangeImage(e) {
-    console.log(e.target.files[0])
     this.setState({ ...this.state, image: e.target.files[0] })
   }
   handleSubmit(e) {
     e.preventDefault()
     let { title, image, shortDescription, level, time } = this.state
     let basicInfo = { title, image, shortDescription, level, time }
-    console.log(basicInfo)
+    
     this.props.addRecipe(basicInfo)
-
-    // console.log(this.state)
-
   }
+
   render() {
+    let { basicInfoRequesting } = this.props
     let { title, image, shortDescription, level, time } = this.state
 
     return (
@@ -86,6 +85,7 @@ class AddBasicInfo extends React.Component {
                 </div>
 
                 <button type="submit" className="btn btn-outline-primary">Lưu và tiếp tục</button>
+                <Loading isLoading={basicInfoRequesting} />
               </form>
             </div>
 
@@ -99,13 +99,14 @@ class AddBasicInfo extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {}
+  let { basicInfoRequesting } = state.recipeReducer
+  return { basicInfoRequesting }
 }
 
 const mapDispatchToProps = (dispathch, props) => {
   return {
-    addRecipe: (recipe) => {
-      dispathch(recipeActions.addRecipe(recipe))
+    addRecipe: (basicInfo) => {
+      dispathch(recipeActions.addRecipeBasicInfo(basicInfo))
     }
   }
 }

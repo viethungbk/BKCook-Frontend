@@ -2,16 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 class AlertContainer extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      visible: false
-    }
-  }
-
   render() {
     let { type, message } = this.props
-    console.log(type)
     return (
       <div className='mt-100'>
         {

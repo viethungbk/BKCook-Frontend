@@ -6,14 +6,11 @@ import { userActions } from '../../actions/userActions'
 const Account = (props) => {
   let { handleLogout } = props
   let { userName } = JSON.parse(localStorage.getItem('user'))
-  console.log(userName)
   return (
     <div className="dropdown">
       <Link className="btn btn-outline-success mr-2" to='/recipe/add'>Đăng công thức</Link>
       <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {/* <div className='avatar'> */}
         <img src="https://i.pinimg.com/236x/00/8b/7c/008b7c4df7f76c54008b3fb527b3722c--monkey-d-luffy-one-piece.jpg" className="rounded-circle avatar" alt="Cinque Terre" />
-        {/* </div> */}
 
         {userName}
       </button>
@@ -21,7 +18,6 @@ const Account = (props) => {
         <a className="dropdown-item" href="#">Cập nhật hồ sơ</a>
         <div className="dropdown-divider" />
         <button className='dropdown-item' onClick={handleLogout}>Đăng xuất</button>
-        {/* <a className="" href="#">Đăng xuất</a> */}
       </div>
     </div>
   )

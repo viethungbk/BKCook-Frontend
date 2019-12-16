@@ -10,4 +10,6 @@ const callAPI = (endPoint, method = 'GET', body = null, headers = {}) => {
   })
 }
 
+
+
 export default callAPI;

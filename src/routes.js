@@ -9,6 +9,7 @@ import AuthorDetailPage from './pages/details/AuthorDetailPage'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
 import AddBasicInfo from './pages/recipe/AddBasicInfo'
+import AddRecipePage from './pages/recipe/AddRecipePage'
 
 const routes = [
   {
@@ -54,7 +55,7 @@ const routes = [
   {
     path: '/recipe/add/',
     exact: true,
-    main: () => <AddBasicInfo />
+    main: () => <AddRecipePage />
   },
   {
     path: '',
