@@ -1,14 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import {
     Container,
     Row,
-    Col,
-    Card,
-    CardBody,
-    CardFooter,
-    Badge,
-    Button
 } from "shards-react";
 import PageTitle from "../../components/common/PageTitle";
 

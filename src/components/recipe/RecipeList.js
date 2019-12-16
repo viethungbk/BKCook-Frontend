@@ -17,14 +17,15 @@ import RecipeItem from "./RecipeItem";
 
 class RecipeList extends Component {
   render() {
+    const { catName } = this.props;
     return (
       <Row>
         <Col>
           <Card small className="mb-4">
             <CardHeader className="border-bottom">
-              <h6 className="m-0">Danh sách công thức</h6>
+              <h6 className="m-0 ml-5">Công thức các món {catName} </h6>
             </CardHeader>
-            <CardBody className="p-0 pb-3">
+            <CardBody className="p-0 pb-3 pl-3 pr-3">
               <table className="table mb-0">
                 <thead className="bg-light">
                   <tr>
@@ -35,22 +36,16 @@ class RecipeList extends Component {
                       Tên công thức
                   </th>
                     <th scope="col" className="border-0">
-                      Miêu tả công thức
+                      Giới thiệu công thức
                   </th>
                     <th scope="col" className="border-0">
-                      Image
-                  </th>
-                    <th scope="col" className="border-0">
-                      Nguyên liệu
+                      Hình ảnh
                   </th>
                     <th scope="col" className="border-0">
                       Ngày tạo
                   </th>
                     <th scope="col" className="border-0">
                       Trạng thái
-                  </th>
-                    <th scope="col" className="border-0">
-                      Độ khó
                   </th>
                   </tr>
                 </thead>

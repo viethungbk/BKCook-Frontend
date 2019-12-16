@@ -5,9 +5,7 @@ import callApi from "./../../utils/apiCaller";
 import RecipeItem from "../../components/recipe/RecipeItem";
 import RecipeList from "../../components/recipe/RecipeList";
 
-const queryString = require("query-string");
-
-class RecipeListPage extends React.Component {
+class ApproveRecipePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,18 +13,17 @@ class RecipeListPage extends React.Component {
     };
   }
   componentDidMount() {
-    const search = queryString.parse(this.props.location.search);
-    callApi(`recipes/filter?typeRecipe=${search.catName}`, "GET", null).then(
-      res => {
-        let recipes = [];
-        if (res.data.data) {
-          recipes = res.data.data.recipes;
-        }
-        this.setState({
-          recipes
-        });
+    const token = localStorage.getItem("token");
+    callApi("recipes/ready", "GET", null).then(res => {
+      console.log(res.data.data);
+      let recipes = [];
+      if (res.data.data) {
+        recipes = res.data.data;
       }
-    );
+      this.setState({
+        recipes
+      });
+    });
   }
   onDelete = id => {
     var { recipes } = this.state;
@@ -42,26 +39,21 @@ class RecipeListPage extends React.Component {
       }
     });
   };
-
-  onStatus = (id, status) => {
-    var { location } = this.props;
-    console.log(location.search);
-    callApi("recipes/status", "POST", { _id: id, status: status }).then(res => {
-      //location.goBack();
-    });
-  };
-
-  findIndex = (recipes, id) => {
-    var result = -1;
-    recipes.forEach((recipe, index) => {
-      if (recipe.id === id) {
-        result = index;
+  onStatus = id => {
+    let { recipes } = this.state;
+    callApi("recipes/status", "POST", { idRecipe: id, status: 2 }).then(res => {
+      var index = recipes.findIndex(item => item._id === id);
+      if (index !== -1) {
+        recipes.splice(index, 1);
+        this.setState({
+          recipes: [...recipes]
+        });
       }
     });
   };
+
   render() {
     var { recipes } = this.state;
-    const search = queryString.parse(this.props.location.search);
     return (
       <Container fluid className="main-content-container px-4">
         <Row
@@ -78,34 +70,30 @@ class RecipeListPage extends React.Component {
         <Row>
           <Col>
             <Card small className="mb-4">
-              <RecipeList catName={search.catName}>
-                {this.showRecipes(recipes, search)}
-              </RecipeList>
+              <RecipeList>{this.showRecipes(recipes)}</RecipeList>
             </Card>
           </Col>
         </Row>
       </Container>
     );
   }
-  showRecipes(recipes, search) {
+  showRecipes(recipes) {
     var result = null;
     if (recipes.length > 0) {
       result = recipes.map((recipe, index) => {
-        if (recipe.typeRecipe == search.catName) {
-          return (
-            <RecipeItem
-              key={index}
-              recipe={recipe}
-              index={index}
-              onDelete={this.onDelete}
-              onStatus={this.onStatus}
-            />
-          );
-        }
+        return (
+          <RecipeItem
+            key={index}
+            recipe={recipe}
+            index={index}
+            onDelete={this.onDelete}
+            onStatus={this.onStatus}
+          />
+        );
       });
     }
     return result;
   }
 }
 
-export default RecipeListPage;
+export default ApproveRecipePage;

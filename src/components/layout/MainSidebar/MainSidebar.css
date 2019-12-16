@@ -1,0 +1,30 @@
+li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+li>a {
+    position: relative;
+}
+li>a {
+    padding: 12px 5px 12px 15px;
+    display: block;
+}
+.treeview-menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-left: 5px;
+}
+.treeview-menu>li {
+    margin: 0;
+}
+.treeview-menu>li>a {
+    padding: 5px 5px 5px 15px;
+    display: block;
+    font-size: 14px;
+}
+.sidebar-menu li>a {
+    position: relative;
+}

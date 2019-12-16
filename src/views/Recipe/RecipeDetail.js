@@ -1,40 +1,84 @@
 import React from "react";
-import {
-    Container, Row, Col, Card,
-    CardHeader,
-    ListGroup,
-    ListGroupItem,
-    Form,
-    FormGroup,
-    FormInput,
-    FormSelect,
-    FormTextarea,
-    Button
-} from "shards-react";
+import { Container, Row, Col, Button } from "shards-react";
 
 import PageTitle from "../../components/common/PageTitle";
-import UserAccountDetails from "../../components/user-profile-lite/UserAccountDetails";
 import RecipeDetail1 from "../../components/recipe/RecipeDetail1";
 import FormMaterial from "../../components/recipe/FormMaterial";
-import Material from "../../components/recipe/Material";
-import EditMaterial from "../../components/recipe/EditMaterial";
 import FormStep from "../../components/recipe/FormStep";
+import callApi from "./../../utils/apiCaller";
+const queryString = require("query-string");
+class RecipeDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipe: null
+    };
+  }
 
-const RecipeDetail = () => (
-    <Container fluid className="main-content-container px-4">
-        <Row noGutters className="page-header" style={{ margin: '0px', padding: '20px' }}>
-            <PageTitle title="Chi tiết công thức" subtitle="công thức" className="text-sm-left mb-3" />
+  componentDidMount() {
+    const search = queryString.parse(this.props.location.search);
+    callApi(`recipes/id?idRecipe=${search.id}`, "GET", null).then(res => {
+      // console.log("aaa", res.data);
+      // var { data } = res.data;
+      // let recipe = null;
+      // if (data) {
+      //     recipe = data;
+      // }
+      this.setState({
+        recipe: res.data.data || null
+      });
+    });
+  }
+  onDelete = id => {
+    var { history } = this.props;
+    if (confirm("Bạn chắc chắn muốn xóa ?")) {
+      /* eslint no-restricted-globals:0 */
+      callApi(`recipes/${id}`, "DELETE", { idRecipe: `${id}` }).then(res => {
+        if (res.status === 200) {
+          //
+          history.push("/recipeList");
+        }
+      });
+    }
+  };
+
+  render() {
+    var { recipe } = this.state;
+    if (!recipe) {
+      return <div></div>;
+    }
+    return (
+      <Container fluid className="main-content-container px-4">
+        <Row
+          noGutters
+          className="page-header"
+          style={{ margin: "0px", padding: "20px" }}
+        >
+          <PageTitle
+            title="Chi tiết công thức"
+            subtitle="công thức"
+            className="text-sm-left mb-3"
+          />
+          <Button
+            theme="danger"
+            style={{ width: "60px", padding: "5px", marginLeft: "50%" }}
+            onClick={() => this.onDelete(recipe._id)}
+          >
+            Xóa
+          </Button>
         </Row>
         <Row>
-            <Col lg="4">
-                <RecipeDetail1 />
-            </Col>
-            <Col lg="8">
-                <FormMaterial />
-                <FormStep />
-            </Col>
+          <Col lg="4">
+            <RecipeDetail1 recipe={recipe} />
+          </Col>
+          <Col lg="8">
+            {recipe.materials && <FormMaterial material={recipe.materials} />}
+            {recipe.steps && <FormStep step={recipe.steps} />}
+          </Col>
         </Row>
-    </Container>
-);
+      </Container>
+    );
+  }
+}
 
 export default RecipeDetail;

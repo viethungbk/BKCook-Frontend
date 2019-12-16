@@ -1,118 +1,90 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  CardFooter,
-  Badge,
-  Button
-} from "shards-react";
-import axios from 'axios';
+import { Container, Row } from "shards-react";
 import PageTitle from "../../components/common/PageTitle";
 import callApi from "./../../utils/apiCaller";
-import RecipeItem from "../../components/recipe/RecipeItem";
-import RecipeList from "../../components/recipe/RecipeList";
+import { Link } from "react-router-dom";
 
 class CategoryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      categorys: [
-        {
-          image: '../../images/category/1.png',
-          catName: 'Ăn sáng'
-        },
-        {
-          image: '../../images/category/2.png',
-          catName: 'Ăn vặt'
-        },
-        {
-          image: '../../images/category/3.png',
-          catName: 'Khai vị'
-        },
-        {
-          image: '../../images/category/4.png',
-          catName: 'Món chay'
-        },
-        {
-          image: '../../images/category/5.png',
-          catName: 'Món chính'
-        },
-        {
-          image: '../../images/category/6.png',
-          catName: 'Nhanh-Dễ'
-        },
-        {
-          image: '../../images/category/7.png',
-          catName: 'Làm bánh'
-        },
-        {
-          image: '../../images/category/8.png',
-          catName: 'Healthy'
-        },
-        {
-          image: '../../images/category/9.png',
-          catName: 'Thức uống'
-        },
-        {
-          image: '../../images/category/10.png',
-          catName: 'Salad'
-        },
-        {
-          image: '../../images/category/11.png',
-          catName: 'Nước chấm'
-        },
-        {
-          image: '../../images/category/12.png',
-          catName: 'Pasta - Spagheti'
-        },
-        {
-          image: '../../images/category/13.png',
-          catName: 'Gà'
-        },
-        {
-          image: '../../images/category/14.png',
-          catName: 'Snacks'
-        },
-        {
-          image: '../../images/category/15.png',
-          catName: 'Bún - mì - Phở'
-        },
-        {
-          image: '../../images/category/16.png',
-          catName: 'Lẩu'
-        },
-
-      ]
+      categorys: []
     };
+  }
+  componentDidMount() {
+    let accessToken = localStorage.getItem("token");
+    let headers = {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "multipart/form-data"
+    };
+    callApi("categories/", "GET", null, headers).then(res => {
+      if (res.data.data) {
+        this.setState({
+          categorys: res.data.data
+        });
+      } else {
+        this.setState({
+          categorys: []
+        });
+      }
+    });
   }
 
   render() {
-    console.log(this.state);
     var { categorys } = this.state;
+    if (categorys.length === 0) {
+      return <h1>Không có loại công thức</h1>;
+    }
     return (
       <Container fluid className="main-content-container px-4">
-        <Row noGutters className="page-header" style={{ margin: '0px', padding: '15px', marginTop: '30px' }}>
-          <PageTitle title="Danh sách công thức" subtitle="recipe" className="text-sm-left mb-3" />
+        <Row
+          noGutters
+          className="page-header"
+          style={{ margin: "0px", padding: "15px", marginTop: "30px" }}
+        >
+          <PageTitle
+            title="Danh sách công thức"
+            subtitle="recipe"
+            className="text-sm-left mb-3"
+          />
         </Row>
-        <Row style={{ padding: '15px' }}>
+        <Row style={{ padding: "15px" }}>
           {categorys.map((cat, index) => {
-            console.log(image);
-            const {image, catName} = cat;
-            return (<div className="recommend-cuisine-box row10" style={{ background: 'white', padding: '10px', borderRadius: '15px', width: '15%', marginRight: '20px', marginBottom: '20px' }} key={index}>
-              <img className="ico"
-                src="#"
-                style={{ width: '36px', height: '36px', borderRadius: '10px', marginLeft: '45px' }} />
-              <br></br>
-              <p className="text-center" style={{ margin: '5px' }}>cat.catName</p>
-            </div>)
-            
+            const { image, title } = cat;
+            return (
+              <div
+                className="recommend-cuisine-box row10"
+                style={{
+                  background: "white",
+                  padding: "10px",
+                  borderRadius: "15px",
+                  width: "15%",
+                  marginRight: "15px",
+                  marginBottom: "20px"
+                }}
+                key={index}
+              >
+                <img
+                  className="ico"
+                  src={`http://202.191.56.159:2900/${image}`}
+                  style={{
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "10px",
+                    marginLeft: "50px",
+                    marginTop: "10px"
+                  }}
+                />
+                <br></br>
+                <p className="text-center" style={{ margin: "5px" }}>
+                  <Link to={`/recipeList?catName=${title}`}>{title}</Link>
+                </p>
+              </div>
+            );
           })}
         </Row>
       </Container>
-    )
+    );
   }
 }
 

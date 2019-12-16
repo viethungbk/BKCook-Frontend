@@ -8,6 +8,7 @@ import SidebarSearch from "./SidebarSearch";
 import SidebarNavItems from "./SidebarNavItems";
 
 import { Store } from "../../../flux";
+import MainSidebar1 from "../../default-layout/MainSidebar1";
 
 class MainSidebar extends React.Component {
   constructor(props) {
@@ -44,17 +45,11 @@ class MainSidebar extends React.Component {
       "col-12",
       this.state.menuVisible && "open"
     );
-
     return (
-      <Col
-        tag="aside"
-        className={classes}
-        lg={{ size: 2 }}
-        md={{ size: 3 }}
-      >
+      <Col tag="aside" className={classes} lg={{ size: 2 }} md={{ size: 3 }}>
         <SidebarMainNavbar hideLogoText={this.props.hideLogoText} />
         <SidebarSearch />
-        <SidebarNavItems />
+        <MainSidebar1 location={this.props.location} />
       </Col>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import axios from 'axios';
+import axios from "axios";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "shards-react";
 
@@ -11,60 +11,266 @@ import NewDraft from "./../components/blog/NewDraft";
 import Discussions from "./../components/blog/Discussions";
 import TopReferrals from "./../components/common/TopReferrals";
 
-const BlogOverview = ({ smallStats }) => (
-  <Container fluid className="main-content-container px-4">
-    {/* Page Header */}
-    <Row noGutters className="page-header" style={{ margin: '0px', padding: '20px' }}>
-      <PageTitle title="Admin-Dashboard" subtitle="Dashboard" className="text-sm-left mb-3" />
-    </Row>
+const BlogOverview = props => {
+  const { smallStats } = props;
 
-    {/* Small Stats Blocks */}
-    <Row style={{ display: 'flex', marginBottom: '25px', marginLeft: '20px', marginTop: '20px' }}>
-      {smallStats.map((stats, idx) => (
-        <Col className="col-lg mb-4" key={idx} {...stats.attrs} style={{ width: '240px' }}>
-          <SmallStats
-            id={`small-stats-${idx}`}
-            variation="1"
-            chartData={stats.datasets}
-            chartLabels={stats.chartLabels}
-            label={stats.label}
-            value={stats.value}
-            percentage={stats.percentage}
-            increase={stats.increase}
-            decrease={stats.decrease}
-          />
+  return (
+    <Container fluid className="main-content-container px-4">
+      {/* Page Header */}
+
+      <Row
+        noGutters
+        className="page-header"
+        style={{ margin: "0px", padding: "20px" }}
+      >
+        <PageTitle
+          title="Trang chủ"
+          subtitle="admin"
+          className="text-sm-left mb-3"
+        />
+      </Row>
+      <div className="d-flex flex-col" style={{ padding: "30px" }}>
+        <div
+          style={{
+            width: "18%",
+            margin: "1%",
+            height: "150px",
+            background: "white",
+            borderRadius: "10px"
+          }}
+        >
+          <p
+            style={{
+              marginLeft: "18%",
+              marginRight: "18%",
+              width: "64%",
+              marginTop: "18%",
+              color: "#41C6F4",
+              marginBottom: "0px",
+              paddingBottom: "0px",
+              fontSize: "25px"
+            }}
+          >
+            Công thức
+          </p>
+          <br></br>
+          <p
+            style={{
+              marginLeft: "30%",
+              color: "#41C6F4",
+              marginRight: "18%",
+              fontSize: "35px",
+              marginTop: "0px",
+              paddingTop: "0px"
+            }}
+          >
+            100
+          </p>
+        </div>
+
+        <div
+          style={{
+            width: "18%",
+            margin: "1%",
+            height: "150px",
+            background: "white",
+            borderRadius: "10px"
+          }}
+        >
+          <p
+            style={{
+              marginLeft: "18%",
+              marginRight: "18%",
+              width: "64%",
+              marginTop: "18%",
+              color: "#41C6F4",
+              marginBottom: "0px",
+              paddingBottom: "0px",
+              fontSize: "25px"
+            }}
+          >
+            Bài viết
+          </p>
+          <br></br>
+          <p
+            style={{
+              marginLeft: "30%",
+              color: "#41C6F4",
+              fontSize: "35px",
+              marginTop: "0px",
+              paddingTop: "0px"
+            }}
+          >
+            100
+          </p>
+        </div>
+        <div
+          style={{
+            width: "18%",
+            margin: "1%",
+            height: "150px",
+            background: "white",
+            borderRadius: "10px"
+          }}
+        >
+          <p
+            style={{
+              marginLeft: "10%",
+              marginTop: "18%",
+              width: "80%",
+              color: "#41C6F4",
+              marginBottom: "0px",
+              paddingBottom: "0px",
+              fontSize: "25px"
+            }}
+          >
+            Người dùng
+          </p>
+          <br></br>
+          <p
+            style={{
+              marginLeft: "30%",
+              color: "#41C6F4",
+              fontSize: "35px",
+              marginTop: "0px",
+              paddingTop: "0px"
+            }}
+          >
+            100
+          </p>
+        </div>
+        <div
+          style={{
+            width: "18%",
+
+            margin: "1%",
+            height: "150px",
+            background: "white",
+            borderRadius: "10px"
+          }}
+        >
+          <p
+            style={{
+              marginLeft: "18%",
+              marginRight: "18%",
+              width: "64%",
+              marginTop: "18%",
+              color: "#41C6F4",
+              marginBottom: "0px",
+              paddingBottom: "0px",
+              fontSize: "25px"
+            }}
+          >
+            Nhà hàng
+          </p>
+          <br></br>
+          <p
+            style={{
+              marginLeft: "30%",
+              color: "#41C6F4",
+              fontSize: "35px",
+              marginTop: "0px",
+              paddingTop: "0px"
+            }}
+          >
+            100
+          </p>
+        </div>
+        <div
+          style={{
+            width: "18%",
+            margin: "1%",
+            height: "150px",
+            background: "white",
+            borderRadius: "10px"
+          }}
+        >
+          <p
+            style={{
+              marginLeft: "18%",
+              marginRight: "18%",
+              width: "64%",
+              marginTop: "18%",
+              color: "#41C6F4",
+              marginBottom: "0px",
+              paddingBottom: "0px",
+              fontSize: "25px"
+            }}
+          >
+            Lớp học
+          </p>
+          <br></br>
+          <p
+            style={{
+              marginLeft: "30%",
+              color: "#41C6F4",
+              fontSize: "35px",
+              marginTop: "0px",
+              paddingTop: "0px"
+            }}
+          >
+            100
+          </p>
+        </div>
+      </div>
+      <Row>
+        {/* Users Overview */}
+        <Col
+          lg="8"
+          className="mb-4"
+          style={{ width: "70%", background: "white" }}
+        >
+          <div
+            style={{
+              height: "70px",
+              paddingTop: "20px",
+              marginLeft: "30%",
+              marginRight: "30%"
+            }}
+          >
+            <h4>Ăn ngon mỗi ngày</h4>
+          </div>
+          <img
+            src={require("../images/adminpage.jpg")}
+            style={{ width: "100%", height: "330px" }}
+          ></img>
         </Col>
-      ))}
-    </Row>
 
-    <Row>
-      {/* Users Overview */}
-      <Col lg="8" md="12" sm="12" className="mb-4" style={{ width: '70%' }}>
-        <UsersOverview />
-      </Col>
+        {/* Users by Device */}
+        <Col lg="4" md="6" sm="12" className="mb-4" style={{ width: "30%" }}>
+          <UsersByDevice />
+        </Col>
 
-      {/* Users by Device */}
-      <Col lg="4" md="6" sm="12" className="mb-4" style={{ width: '30%' }} >
-        <UsersByDevice />
-      </Col>
+        {/* New Draft */}
+        <Col lg="4" md="6" sm="12" className="mb-4" style={{ height: "500px" }}>
+          <NewDraft />
+        </Col>
 
-      {/* New Draft */}
-      <Col lg="4" md="6" sm="12" className="mb-4" style={{ height: '500px' }}>
-        <NewDraft />
-      </Col>
+        {/* Discussions */}
+        <Col
+          lg="5"
+          md="12"
+          sm="12"
+          className="mb-4"
+          style={{ height: "500px" }}
+        >
+          <Discussions />
+        </Col>
 
-      {/* Discussions */}
-      <Col lg="5" md="12" sm="12" className="mb-4" style={{ height: '500px' }}>
-        <Discussions />
-      </Col>
-
-      {/* Top Referrals */}
-      <Col lg="3" md="12" sm="12" className="mb-4" style={{ height: '500px' }}>
-        <TopReferrals />
-      </Col>
-    </Row>
-  </Container >
-);
+        {/* Top Referrals */}
+        <Col
+          lg="3"
+          md="12"
+          sm="12"
+          className="mb-4"
+          style={{ height: "500px" }}
+        >
+          <TopReferrals />
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
 BlogOverview.propTypes = {
   /**
@@ -77,8 +283,8 @@ BlogOverview.defaultProps = {
   smallStats: [
     {
       label: "Posts",
-      value: "2,390",
-      percentage: "4.7%",
+      value: "1000",
+      percentage: "7,3%",
       increase: true,
       chartLabels: [null, null, null, null, null, null, null],
       attrs: { md: "6", sm: "6" },

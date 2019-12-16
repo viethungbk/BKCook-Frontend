@@ -15,7 +15,9 @@ import {
 const TopReferrals = ({ title, referralData }) => (
   <Card small>
     <CardHeader className="border-bottom">
-      <h6 className="m-0" style={{ fontSize: '20px', margin: '15px' }}>{title}</h6>
+      <h6 className="m-0" style={{ fontSize: "20px", margin: "15px" }}>
+        {title}
+      </h6>
       <div className="block-handle" />
     </CardHeader>
 
@@ -40,7 +42,7 @@ const TopReferrals = ({ title, referralData }) => (
             size="sm"
             value="last-week"
             style={{ maxWidth: "130px" }}
-            onChange={() => { }}
+            onChange={() => {}}
           >
             <option value="last-week">Last Week</option>
             <option value="today">Today</option>

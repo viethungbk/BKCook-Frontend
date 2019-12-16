@@ -1,33 +1,33 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 
 // Layout Types
 import { DefaultLayout } from "./layouts";
 
 // Route Views
 import BlogOverview from "./views/BlogOverview";
-import UserProfileLite from "./views/UserProfileLite";
-import AddNewPost from "./views/AddNewPost";
 import Errors from "./views/Errors";
-import ComponentsOverview from "./views/ComponentsOverview";
-import Tables from "./views/Tables";
-import BlogPosts from "./views/BlogPosts";
 import RecipeListPage from "./views/Recipe/RecipeListPage";
+import ApproveRecipePage from "./views/Recipe/ApproveRecipePage";
 import CategoryPage from "./views/Recipe/CategoryPage";
 import RecipeDetail from "./views/Recipe/RecipeDetail";
 import RecipeAdd from "./views/Recipe/RecipeAdd";
-import ListUsers from "./views/user/ListUsers";
+import ListUsers from "./views/user/ListUserPage";
 import DetailUser from "./views/user/DetailUser";
 import EditUser from "./views/user/EditUser";
 import AddUser from "./views/user/AddUser";
 import ListClassPage from "./views/class/ListClassPage";
 import DetailClass from "./views/class/DetailClass";
 import AddClassPage from "./views/class/AddClassPage";
-import ListRestaurant from "./views/restaurant/ListRestaurant";
 import ListBlog from "./views/blog/ListBlog";
-import Demo from "./views/Demo";
+import AddCategoryPage from "./views/Recipe/AddCategoryPage";
+import withTracker from "./withTracker";
+import LoginPage from "./views/loginPage";
+import DetailBlog from "./views/blog/DetailBlog";
+import AddBlogPage from "./views/blog/AddBlogPage";
+import ListRestaurant from "./views/restaurant/ListRestaurant";
 
-export default [
+const routes = [
   {
     path: "/",
     exact: true,
@@ -35,24 +35,46 @@ export default [
     component: () => <Redirect to="/dashboard" />
   },
   {
+    path: "/login",
+    exact: true,
+    component: LoginPage
+  },
+  {
     path: "/dashboard",
     layout: DefaultLayout,
     component: BlogOverview
   },
+
   {
     path: "/recipe",
     layout: DefaultLayout,
     component: CategoryPage
   },
   {
-    path: "/recipeList/1",
+    path: "/categoryAdd",
     layout: DefaultLayout,
-    component: RecipeListPage
+    component: AddCategoryPage
+  },
+  {
+    path: "/recipeList",
+    layout: DefaultLayout,
+    // component: RecipeListPage
+    component: ({ location }) => <RecipeListPage location={location} />
+  },
+  {
+    path: "/recipeApprove",
+    layout: DefaultLayout,
+    // component: RecipeListPage
+    component: ({ location, history }) => (
+      <ApproveRecipePage location={location} history={history} />
+    )
   },
   {
     path: "/recipeDetail",
     layout: DefaultLayout,
-    component: RecipeDetail
+    component: ({ location, history }) => (
+      <RecipeDetail location={location} history={history} />
+    )
   },
   {
     path: "/recipeAdd",
@@ -87,7 +109,7 @@ export default [
   {
     path: "/detailClasses",
     layout: DefaultLayout,
-    component: DetailClass
+    component: ({ history }) => <DetailClass history={history} />
   },
   {
     path: "/addClasses",
@@ -95,39 +117,24 @@ export default [
     component: AddClassPage
   },
   {
-    path: "/restaurant",
-    layout: DefaultLayout,
-    component: ListRestaurant
-  },
-  {
     path: "/listBlog",
     layout: DefaultLayout,
     component: ListBlog
   },
   {
-    path: "/add-new-post",
+    path: "/detailBlog",
     layout: DefaultLayout,
-    component: AddNewPost
+    component: ({ location }) => <DetailBlog history={location} />
   },
   {
-    path: "/components-overview",
+    path: "/addBlog",
     layout: DefaultLayout,
-    component: ComponentsOverview
+    component: AddBlogPage
   },
   {
-    path: "/tables",
+    path: "/restaurant",
     layout: DefaultLayout,
-    component: Tables
-  },
-  {
-    path: "/blog-posts",
-    layout: DefaultLayout,
-    component: BlogPosts
-  },
-  {
-    path: "/demo",
-    layout: DefaultLayout,
-    component: Demo
+    component: ListRestaurant
   },
   {
     path: "/error",
@@ -135,3 +142,27 @@ export default [
     component: Errors
   }
 ];
+
+const route = () =>
+  routes.map((route, index) => {
+    return (
+      <Route
+        key={index}
+        path={route.path}
+        exact={route.exact}
+        component={withTracker(props => {
+          if (localStorage.getItem("token")) {
+            return (
+              <route.layout {...props}>
+                <route.component {...props} />
+              </route.layout>
+            );
+          } else {
+            return <LoginPage />;
+          }
+        })}
+      />
+    );
+  });
+
+export default route;

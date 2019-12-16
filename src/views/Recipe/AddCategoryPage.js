@@ -1,17 +1,15 @@
 import React from "react";
-import { Container, Row, Col, FormTextarea } from "shards-react";
+import { Container, Row } from "shards-react";
 
 import PageTitle from "../../components/common/PageTitle";
 import callApi from "../../utils/apiCaller";
 
-class AddBlogPage extends React.Component {
+class AddCategoryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "",
-      image: "",
-      content: "",
-      video: ""
+      image: ""
     };
   }
   onChange = e => {
@@ -24,8 +22,7 @@ class AddBlogPage extends React.Component {
   };
   onSave = e => {
     e.preventDefault();
-    var { title, image, content, video } = this.state;
-    var { history } = this.props;
+    var { title, image } = this.state;
     let accessToken = localStorage.getItem("token");
 
     let headers = {
@@ -36,16 +33,13 @@ class AddBlogPage extends React.Component {
 
     formData.set("image", image);
     formData.set("title", title);
-    formData.set("content", content);
-    formData.set("video", video);
 
-    callApi("blogs", "POST", formData, headers)
+    callApi("categories", "POST", formData, headers)
       .then(res => {
         console.log("res", res);
-        // history.goBack();
       })
       .catch(err => {
-        console.log("err", err);
+        console.log("err", err.response);
         console.log("hi");
       });
   };
@@ -58,17 +52,17 @@ class AddBlogPage extends React.Component {
   };
 
   render() {
-    var { title, image, content, video } = this.state;
+    var { title, image } = this.state;
     return (
-      <Container style={{ width: "100%" }}>
+      <Container>
         <Row
           noGutters
           className="page-header"
           style={{ margin: "0px", padding: "20px" }}
         >
           <PageTitle
-            title="Thêm bài viết"
-            subtitle="Bài viết"
+            title="Thêm loại công thức"
+            subtitle="công thức"
             className="text-sm-left mb-3"
           />
         </Row>
@@ -76,7 +70,7 @@ class AddBlogPage extends React.Component {
           <form
             style={{
               background: "white",
-              padding: "25px",
+              padding: "10px",
               width: "80%",
               marginLeft: "10%",
               marginRight: "10%",
@@ -85,24 +79,13 @@ class AddBlogPage extends React.Component {
             onSubmit={this.onSave}
           >
             <div className="form-group">
-              <label>Tên bài viết</label>
+              <label>Tên loại công thức</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="nhập tên bài viết"
+                placeholder="nhập tên loại công thức"
                 name="title"
                 value={title}
-                onChange={this.onChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Linh video</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="https://www.youtube.com/watch?v=tdkNKgTMtqc"
-                name="video"
-                value={video}
                 onChange={this.onChange}
               />
             </div>
@@ -117,19 +100,8 @@ class AddBlogPage extends React.Component {
                 Chọn hình ảnh
               </label>
             </div>
-            <Row form>
-              <Col md="12" className="form-group">
-                <label htmlFor="feDescription">Nội dung bài viết</label>
-                <FormTextarea
-                  name="content"
-                  value={content}
-                  onChange={this.onChange}
-                  rows="5"
-                />
-              </Col>
-            </Row>
             <button type="submit" className="btn btn-primary">
-              Thêm bài viết
+              Thêm loại công thức
             </button>
           </form>
         </Row>
@@ -138,4 +110,4 @@ class AddBlogPage extends React.Component {
   }
 }
 
-export default AddBlogPage;
+export default AddCategoryPage;

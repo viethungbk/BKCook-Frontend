@@ -1,23 +1,10 @@
 import React from "react";
 import {
-    Container, Row, Col, Card,
-    CardHeader,
-    ListGroup,
-    ListGroupItem,
-    Form,
-    FormGroup,
-    FormInput,
-    FormSelect,
-    FormTextarea,
-    Button
+    Container, Row, Col
 } from "shards-react";
 
 import PageTitle from "../../components/common/PageTitle";
-import RecipeDetail1 from "../../components/recipe/RecipeDetail1";
-import FormMaterial from "../../components/recipe/FormMaterial";
-import Material from "../../components/recipe/Material";
 import EditMaterial from "../../components/recipe/EditMaterial";
-import FormStep from "../../components/recipe/FormStep";
 import EditStep from "../../components/recipe/EditStep";
 import AddRecipeDetail from "../../components/recipe/AddRecipeDetail";
 
