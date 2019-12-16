@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 class BlogItem extends Component {
   render() {
     var { blog, index } = this.props;
+    // console.log(blog._id);
     return (
       <Col lg="6" sm="12" className="mb-4" key={index}>
         <Card small className="card-post card-post--aside card-post--1">

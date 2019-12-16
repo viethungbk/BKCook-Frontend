@@ -22,6 +22,7 @@ class AddCategoryPage extends React.Component {
   };
   onSave = e => {
     e.preventDefault();
+    var { history } = this.props;
     var { title, image } = this.state;
     let accessToken = localStorage.getItem("token");
 
@@ -38,6 +39,7 @@ class AddCategoryPage extends React.Component {
       .then(res => {
         console.log("res", res);
         alert("Thêm loại công thức thành công");
+        history.push("/recipe");
       })
       .catch(err => {
         alert("Thêm không thành công");

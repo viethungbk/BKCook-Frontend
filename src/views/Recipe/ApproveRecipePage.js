@@ -29,6 +29,7 @@ class ApproveRecipePage extends React.Component {
     var { recipes } = this.state;
     callApi(`recipes/${id}`, "DELETE", null).then(res => {
       if (res.status === 200) {
+        console.log("============");
         var index = this.findIndex(recipes, id);
         if (index !== -1) {
           recipes.splice(index, 1);

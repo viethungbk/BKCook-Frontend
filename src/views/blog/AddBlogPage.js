@@ -43,7 +43,7 @@ class AddBlogPage extends React.Component {
       .then(res => {
         alert("Thêm thành công");
         console.log("res", res);
-        // history.goBack();
+        history.push("/listBlog");
       })
       .catch(err => {
         alert("Thêm không thành công");

@@ -53,7 +53,7 @@ const routes = [
   {
     path: "/categoryAdd",
     layout: DefaultLayout,
-    component: AddCategoryPage
+    component: ({ history }) => <AddCategoryPage history={history} />
   },
   {
     path: "/recipeList",
@@ -131,7 +131,7 @@ const routes = [
   {
     path: "/addBlog",
     layout: DefaultLayout,
-    component: AddBlogPage
+    component: ({ history }) => <AddBlogPage history={history} />
   },
   {
     path: "/editBlog",

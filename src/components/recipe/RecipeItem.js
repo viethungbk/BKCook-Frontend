@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-  Button
-} from "shards-react";
-import Material from "./Material";
-import Step from "./Step";
+import { Button } from "shards-react";
 import { Link } from "react-router-dom";
 class RecipeItem extends Component {
   onDelete = id => {
