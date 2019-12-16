@@ -136,7 +136,9 @@ const routes = [
   {
     path: "/editBlog",
     layout: DefaultLayout,
-    component: ({ location }) => <EditBlogPage location={location} />
+    component: ({ location, history }) => (
+      <EditBlogPage location={location} history={history} />
+    )
   },
   {
     path: "/restaurant",

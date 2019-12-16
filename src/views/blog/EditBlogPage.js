@@ -36,6 +36,7 @@ class EditBlogPage extends React.Component {
   };
   onSave = e => {
     e.preventDefault();
+    let { history } = this.props;
     var { title, image, content, video, blog } = this.state;
     let accessToken = localStorage.getItem("token");
 
@@ -56,6 +57,7 @@ class EditBlogPage extends React.Component {
         alert("Chỉnh sửa thành công");
         console.log(10);
         console.log("res", res);
+        history.push("/listBlog");
       })
       .catch(err => {
         alert("Chỉnh sửa không thành công");
