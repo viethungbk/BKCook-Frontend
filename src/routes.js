@@ -27,7 +27,6 @@ import DetailBlog from "./views/blog/DetailBlog";
 import AddBlogPage from "./views/blog/AddBlogPage";
 import ListRestaurant from "./views/restaurant/ListRestaurant";
 import EditBlogPage from "./views/blog/EditBlogPage";
-
 const routes = [
   {
     path: "/",
