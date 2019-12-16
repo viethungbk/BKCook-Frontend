@@ -228,7 +228,7 @@ class RecipeDetailPage extends React.Component {
             </ul>
           </Col>
         </Row>
-        <div className='row'>
+        <div className='row mt-10'>
 
           {
             totalRecords && totalRecords > 0 && <ListRecipe
