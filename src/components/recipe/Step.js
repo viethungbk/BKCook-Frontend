@@ -1,15 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    ButtonGroup,
-    Button,
-    Row,
-    Col
-} from "shards-react";
 
 const Step = ({ recipeOne }) => (
     <ol style={{ margin: '0', padding: '0' }}>

@@ -1,12 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Container, Row, Col } from "shards-react";
 
 import PageTitle from "./../components/common/PageTitle";
-import UsersByDevice from "./../components/blog/UsersByDevice";
-import NewDraft from "./../components/blog/NewDraft";
-import Discussions from "./../components/blog/Discussions";
-import TopReferrals from "./../components/common/TopReferrals";
 import callApi from "../utils/apiCaller";
 
 class BlogOverview extends React.Component {
@@ -28,10 +23,62 @@ class BlogOverview extends React.Component {
         });
       }
     });
+    callApi("recipes/total", "GET", null).then(res => {
+      if (res.data) {
+        this.setState({
+          totalRecipe: res.data.data
+        });
+      } else {
+        this.setState({
+          totalRecipe: 0
+        });
+      }
+    });
+    callApi("blogs/total", "GET", null).then(res => {
+      if (res.data) {
+        this.setState({
+          totalBlog: res.data.data
+        });
+      } else {
+        this.setState({
+          totalBlog: 0
+        });
+      }
+    });
+    callApi("restaurants/all", "GET", null).then(res => {
+      //console.log(res.data.data.length);
+      if (res.data) {
+        this.setState({
+          totalRestaurant: res.data.data.length
+        });
+      } else {
+        this.setState({
+          totalRestaurant: 0
+        });
+      }
+    });
+    callApi("cooking-classes", "GET", null).then(res => {
+      console.log(res.data.data);
+      if (res.data) {
+        this.setState({
+          totalClass: res.data.data.totalRecords
+        });
+      } else {
+        this.setState({
+          totalClass: 0
+        });
+      }
+    });
   }
 
   render() {
-    let { totalUser } = this.state;
+    let {
+      totalUser,
+      totalRecipe,
+      totalBlog,
+      totalRestaurant,
+      totalClass
+    } = this.state;
     return (
       <Container fluid className="main-content-container px-4">
         <Row
@@ -72,7 +119,7 @@ class BlogOverview extends React.Component {
             <br></br>
             <p
               style={{
-                marginLeft: "30%",
+                textAlign: "center",
                 color: "#41C6F4",
                 marginRight: "18%",
                 fontSize: "35px",
@@ -80,7 +127,7 @@ class BlogOverview extends React.Component {
                 paddingTop: "0px"
               }}
             >
-              100
+              {totalRecipe}
             </p>
           </div>
 
@@ -110,14 +157,14 @@ class BlogOverview extends React.Component {
             <br></br>
             <p
               style={{
-                marginLeft: "30%",
+                textAlign: "center",
                 color: "#41C6F4",
                 fontSize: "35px",
                 marginTop: "0px",
                 paddingTop: "0px"
               }}
             >
-              100
+              {totalBlog}
             </p>
           </div>
           <div
@@ -145,7 +192,7 @@ class BlogOverview extends React.Component {
             <br></br>
             <p
               style={{
-                marginLeft: "40%",
+                textAlign: "center",
                 color: "#41C6F4",
                 fontSize: "35px",
                 marginTop: "0px",
@@ -182,14 +229,14 @@ class BlogOverview extends React.Component {
             <br></br>
             <p
               style={{
-                marginLeft: "30%",
+                textAlign: "center",
                 color: "#41C6F4",
                 fontSize: "35px",
                 marginTop: "0px",
                 paddingTop: "0px"
               }}
             >
-              100
+              {totalRestaurant}
             </p>
           </div>
           <div
@@ -218,14 +265,15 @@ class BlogOverview extends React.Component {
             <br></br>
             <p
               style={{
-                marginLeft: "30%",
+                textAlign: "center",
+                textAlign: "center",
                 color: "#41C6F4",
                 fontSize: "35px",
                 marginTop: "0px",
                 paddingTop: "0px"
               }}
             >
-              100
+              {totalClass}
             </p>
           </div>
         </div>
@@ -233,7 +281,12 @@ class BlogOverview extends React.Component {
           <Col
             lg="7"
             className="mb-4"
-            style={{ width: "60%", marginRight: "2%", background: "white" }}
+            style={{
+              width: "60%",
+              marginLeft: "2%",
+              marginRight: "2%",
+              background: "white"
+            }}
           >
             <div
               style={{
@@ -258,17 +311,23 @@ class BlogOverview extends React.Component {
             <div
               style={{
                 height: "70px",
-                paddingTop: "20px",
-                marginLeft: "30%",
-                marginRight: "30%"
+                paddingTop: "20px"
               }}
             >
-              <h4></h4>
+              <h6>
+                ♥️ ♥️ ♥️ Yêu thương có thể lắp đầy tất cả chỉ trừ cái bao tử của
+                bạn mà thôi
+              </h6>
             </div>
             <img
               src={require("../images/admin.jpg")}
-              style={{ width: "100%" }}
+              style={{ width: "100%", marginBottom: "20px" }}
             ></img>
+            <p>
+              😆 Đói thì phải ăn, khát thì phải uống, các nhà khoa học gọi đó là
+              định luật bảo toàn tính mạng
+            </p>
+            <p> 😊 Tôi chỉ muốn hai điều: Giảm cân và ăn </p>
           </Col>
         </Row>
       </Container>

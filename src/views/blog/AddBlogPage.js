@@ -41,10 +41,12 @@ class AddBlogPage extends React.Component {
 
     callApi("blogs", "POST", formData, headers)
       .then(res => {
+        alert("Thêm thành công");
         console.log("res", res);
         // history.goBack();
       })
       .catch(err => {
+        alert("Thêm không thành công");
         console.log("err", err);
         console.log("hi");
       });

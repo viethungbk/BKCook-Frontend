@@ -33,7 +33,7 @@ class CategoryPage extends React.Component {
   render() {
     var { categorys } = this.state;
     if (categorys.length === 0) {
-      return <h1>Không có loại công thức</h1>;
+      return <span>không có loại công thức</span>;
     }
     return (
       <Container fluid className="main-content-container px-4">

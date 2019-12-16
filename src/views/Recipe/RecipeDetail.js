@@ -35,7 +35,7 @@ class RecipeDetail extends React.Component {
       /* eslint no-restricted-globals:0 */
       callApi("recipes/id", "DELETE", { idRecipe: id }).then(res => {
         if (res.status === 200) {
-          //
+          alert("Đã xóa thành công");
           history.push("/recipeList");
         }
       });
@@ -45,7 +45,7 @@ class RecipeDetail extends React.Component {
   render() {
     var { recipe } = this.state;
     if (!recipe) {
-      return <div></div>;
+      return <span>không có loại công thức</span>;
     }
     return (
       <Container fluid className="main-content-container px-4">

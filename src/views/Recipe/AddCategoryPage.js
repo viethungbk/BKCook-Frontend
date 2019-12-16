@@ -37,8 +37,10 @@ class AddCategoryPage extends React.Component {
     callApi("categories", "POST", formData, headers)
       .then(res => {
         console.log("res", res);
+        alert("Thêm loại công thức thành công");
       })
       .catch(err => {
+        alert("Thêm không thành công");
         console.log("err", err.response);
         console.log("hi");
       });

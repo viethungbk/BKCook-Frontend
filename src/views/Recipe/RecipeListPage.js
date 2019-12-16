@@ -32,6 +32,7 @@ class RecipeListPage extends React.Component {
     var { recipes } = this.state;
     callApi("recipes/id", "DELETE", { idRecipe: id }).then(res => {
       if (res.status === 200) {
+        alert("Đã xóa thành công");
         var index = this.findIndex(recipes, id);
         if (index !== -1) {
           recipes.splice(index, 1);
@@ -47,7 +48,7 @@ class RecipeListPage extends React.Component {
     var { location } = this.props;
     console.log(location.search);
     callApi("recipes/status", "POST", { _id: id, status: status }).then(res => {
-      //location.goBack();
+      alert("Duyệt thành công");
     });
   };
 

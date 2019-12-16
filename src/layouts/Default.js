@@ -5,8 +5,6 @@ import { Container, Row, Col } from "shards-react";
 import MainNavbar from "../components/layout/MainNavbar/MainNavbar";
 import MainSidebar from "../components/layout/MainSidebar/MainSidebar";
 import MainFooter from "../components/layout/MainFooter";
-import Sidebar from "../components/default-layout/Sidebar";
-import MainSidebar1 from "../components/default-layout/MainSidebar1";
 
 const DefaultLayout = ({ children, noNavbar, noFooter, location }) => {
   return (

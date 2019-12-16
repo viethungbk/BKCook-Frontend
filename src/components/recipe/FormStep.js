@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Card, ListGroup, ListGroupItem, Row, Col, Button } from "shards-react";
-import EditStep from "./EditStep";
 
 class FormStep extends Component {
   render() {

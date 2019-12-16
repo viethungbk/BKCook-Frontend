@@ -24,32 +24,53 @@ class BlogItem extends Component {
               />
             </div>
             <div className="d-flex flex-col">
-              <Button
-                theme="warning"
-                style={{
-                  marginLeft: "40%",
-                  marginRight: "45%",
-                  padding: "10px"
-                }}
-              >
-                <Link
-                  to={`/editBlog?id=${blog._id}`}
-                  style={{ color: "white" }}
+              <div className="col">
+                <Button
+                  theme="info"
+                  style={{
+                    marginLeft: "40%",
+                    marginRight: "45%",
+                    padding: "10px"
+                  }}
                 >
-                  Chi tiết
-                </Link>
-              </Button>
-              <Button
-                theme="danger"
-                style={{
-                  marginLeft: "40%",
-                  marginRight: "45%",
-                  padding: "10px"
-                }}
-                onClick={() => this.onDelete(blog._id)}
-              >
-                Xóa
-              </Button>
+                  <Link
+                    to={`/detailBlog?id=${blog._id}`}
+                    style={{ color: "white" }}
+                  >
+                    Chi tiết
+                  </Link>
+                </Button>
+              </div>
+              <div className="col">
+                <Button
+                  theme="warning"
+                  style={{
+                    marginLeft: "40%",
+                    marginRight: "45%",
+                    padding: "10px"
+                  }}
+                >
+                  <Link
+                    to={`/editBlog?id=${blog._id}`}
+                    style={{ color: "white" }}
+                  >
+                    Chỉnh sửa
+                  </Link>
+                </Button>
+              </div>
+              <div className="col">
+                <Button
+                  theme="danger"
+                  style={{
+                    marginLeft: "40%",
+                    marginRight: "45%",
+                    padding: "10px"
+                  }}
+                  onClick={() => this.onDelete(blog._id)}
+                >
+                  Xóa
+                </Button>
+              </div>
             </div>
           </CardBody>
         </Card>

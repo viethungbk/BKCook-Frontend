@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Container, Navbar } from "shards-react";
+import { Navbar } from "shards-react";
 
 import NavbarSearch from "./NavbarSearch";
 import NavbarNav from "./NavbarNav/NavbarNav";
-import NavbarToggle from "./NavbarToggle";
 
 const MainNavbar = ({ layout, stickyTop }) => {
   const classes = classNames(
@@ -16,7 +15,16 @@ const MainNavbar = ({ layout, stickyTop }) => {
 
   return (
     <div className={classes}>
-      <Navbar type="light" className="flex-row" style={{ padding: '0', height: '70px', marginBottom: '0px', position: 'relative' }}>
+      <Navbar
+        type="light"
+        className="flex-row"
+        style={{
+          padding: "0",
+          height: "70px",
+          marginBottom: "0px",
+          position: "relative"
+        }}
+      >
         <NavbarSearch />
         <NavbarNav />
       </Navbar>

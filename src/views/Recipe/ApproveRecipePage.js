@@ -35,6 +35,7 @@ class ApproveRecipePage extends React.Component {
           this.setState({
             recipes: [...recipes]
           });
+          alert("Đã xóa thành công");
         }
       }
     });
@@ -48,6 +49,7 @@ class ApproveRecipePage extends React.Component {
         this.setState({
           recipes: [...recipes]
         });
+        alert("Duyệt thành công");
       }
     });
   };

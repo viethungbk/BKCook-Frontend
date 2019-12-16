@@ -5,7 +5,6 @@ import { Col } from "shards-react";
 
 import SidebarMainNavbar from "./SidebarMainNavbar";
 import SidebarSearch from "./SidebarSearch";
-import SidebarNavItems from "./SidebarNavItems";
 
 import { Store } from "../../../flux";
 import MainSidebar1 from "../../default-layout/MainSidebar1";

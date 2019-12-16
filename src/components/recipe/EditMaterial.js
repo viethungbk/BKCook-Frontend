@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Row,
-  Col,
-  Form,
-  FormInput,
-  FormSelect,
-  FormGroup,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText
-} from "shards-react";
+
 
 const EditMaterial = () => (
   <form style={{ background: 'white', padding: '10px' }}>

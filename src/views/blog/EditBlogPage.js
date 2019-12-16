@@ -53,10 +53,12 @@ class EditBlogPage extends React.Component {
 
     callApi("blogs/edit", "PATCH", formData, headers)
       .then(res => {
+        alert("Chỉnh sửa thành công");
         console.log(10);
         console.log("res", res);
       })
       .catch(err => {
+        alert("Chỉnh sửa không thành công");
         console.log("err", err);
         console.log("hi");
       });

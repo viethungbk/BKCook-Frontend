@@ -43,7 +43,7 @@ class BlogDetailItem extends Component {
             theme="warning"
             style={{ width: "60px", margin: "5px", padding: "5px" }}
           >
-            <Link to={`blogEdit/?id=`} style={{ color: "white" }}>
+            <Link to={`/editBlog?id=${blog._id}`} style={{ color: "white" }}>
               Chỉnh sửa
             </Link>
           </Button>

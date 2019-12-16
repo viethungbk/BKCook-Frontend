@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Row, Nav, NavItem, NavLink } from "shards-react";
-import { Link } from "react-router-dom";
+import { Container, Row } from "shards-react";
 
-const MainFooter = ({ contained, menuItems, copyright }) => (
+const MainFooter = ({ contained, copyright }) => (
   <footer className="main-footer p-2 px-3 bg-white border-top">
     <Container fluid={contained}>
-      <Row style={{ margin: '20px 300px' }}>
+      <Row style={{ margin: "20px 300px" }}>
         <span className="copyright">{copyright}</span>
       </Row>
     </Container>
@@ -18,41 +17,13 @@ MainFooter.propTypes = {
    * Whether the content is contained, or not.
    */
   contained: PropTypes.bool,
-  /**
-   * The menu items array.
-   */
-  menuItems: PropTypes.array,
-  /**
-   * The copyright info.
-   */
+
   copyright: PropTypes.string
 };
 
 MainFooter.defaultProps = {
   contained: false,
-  copyright: "Copyright © 2019 BKCOOK Group 5",
-  menuItems: [
-    {
-      title: "Home",
-      to: "#"
-    },
-    {
-      title: "Services",
-      to: "#"
-    },
-    {
-      title: "About",
-      to: "#"
-    },
-    {
-      title: "Products",
-      to: "#"
-    },
-    {
-      title: "Blog",
-      to: "#"
-    }
-  ]
+  copyright: "Công nghệ web tiên tiến © 2019 BKCOOK Group 5"
 };
 
 export default MainFooter;
