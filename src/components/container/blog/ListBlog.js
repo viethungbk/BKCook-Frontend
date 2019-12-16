@@ -5,15 +5,14 @@ import { showListItem } from '../../../actions/function';
 
 class ListBlog extends React.Component {
   render() {
-    let { totalBlog, blogs, paginate, match } = this.props;
-    let { url } = match;
+    let { totalBlog, blogs, paginate } = this.props;
 
     return (
       <div>
         <div className='row'>
           {showListItem(blogs, ItemBlog)}
         </div>
-        <Pagination totalItem={totalBlog} paginate={paginate} paginateFor={url} />
+        <Pagination totalItem={totalBlog} paginate={paginate} paginateFor='blogs' />
       </div>
 
     )

@@ -1,6 +1,7 @@
 import { recipeConstants } from '../constants/recipeConstants'
 import { materialConstant } from '../constants/materialContstants'
 import { stepConstants } from '../constants/stepConstants'
+import { tagConstants } from '../constants/tagConstants'
 import uuid from 'react-uuid'
 
 let initState = {
@@ -25,7 +26,8 @@ let initState = {
   finishSuccess: false,
   recipe: {
     materials: [],
-    steps: []
+    steps: [],
+    tags: []
   }
 }
 
@@ -48,6 +50,9 @@ const recipeReducer = (state = initState, action) => {
         basicInfoRequesting: false,
         basicInfoRequested: true,
         basicInfoSuccess: true,
+        materialSuccess: false,
+        stepSuccess: false,
+        finishSuccess: false,
         recipe: {
           ...state.recipe,
           _id, title, image, shortDescription, level, time
@@ -122,6 +127,9 @@ const recipeReducer = (state = initState, action) => {
         materialRequesting: false,
         materialRequested: true,
         materialSuccess: true,
+        stepSuccess: false,
+        finishSuccess: false,
+        basicInfoSuccess: false,
         recipe: {
           ...state.recipe,
           idRecipe: action.idRecipe,
@@ -169,7 +177,10 @@ const recipeReducer = (state = initState, action) => {
     case recipeConstants.RECIPE_ADD_STEP_FINISH:
       state = {
         ...state,
-        stepSuccess: true
+        stepSuccess: true,
+        finishSuccess: false,
+        basicInfoSuccess: false,
+        materialSuccess: false
       }
       return state
     case recipeConstants.RECIPE_ADD_FINISH_REQUEST:
@@ -185,7 +196,10 @@ const recipeReducer = (state = initState, action) => {
         ...state,
         finishRequesting: false,
         finishRequested: true,
-        finishSuccess: true
+        finishSuccess: true,
+        basicInfoSuccess: true,
+        materialSuccess: false,
+        stepSuccess: false
       }
       return state
     case recipeConstants.RECIPE_ADD_FINISH_FAILURE:
@@ -195,6 +209,31 @@ const recipeReducer = (state = initState, action) => {
         finishRequested: true,
         finishSuccess: false
       }
+      return state
+    case tagConstants.ADD_TAG:
+      let tag = {
+        _id: uuid(),
+        label: action.tag
+      }
+      state = {
+        ...state,
+        recipe: {
+          ...state.recipe,
+          tags: [...state.recipe.tags, tag]
+        }
+      }
+      return state
+    case tagConstants.DELETE_TAG:
+      state = {
+        ...state,
+        recipe: {
+          ...state.recipe,
+          tags: state.recipe.tags.filter(tag => tag._id !== action._id)
+        }
+      }
+      return state
+    case recipeConstants.CLEAR:
+      state = initState
       return state
     default:
       return state

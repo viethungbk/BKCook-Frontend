@@ -1,5 +1,5 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import ListBlog from '../../components/container/blog/ListBlog'
 import SearchBlog from '../../components/container/blog/SearchBlog'
 import TopBlogContainer from './TopBlogContainer'
@@ -11,55 +11,45 @@ const pages = [
   { label: 'Blog', to: '/blogs' }
 ]
 
-class BlogContainer extends React.Component {
-  componentDidMount() {
-    // this.props.fetchCurrentBlog()
-    this.props.fetchBlogs()
-  }
-  paginate = (page) => {
-    console.log(page)
-    // đã lấy được số trang, chỉ cần dispatch action để lấy được bài viết cần thiết/
-  }
-  render() {
-    let { blogReducer, match } = this.props
-    let { totalRecords, blogs, topBlog } = blogReducer
+const BlogContainer = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(blogActions.fetchBlogs())
+  }, [])
+  let { totalRecords, blogs } = useSelector(state => state.blogReducer)
+  console.log(totalRecords, blogs)
+  let { totalRecords: searchBlogRecords, blogs: searchBlogs } = useSelector(state => state.searchBlogReducer)
 
-    return (
-      <div>
-        <div className='row'>
-          <Breadcrumbs pages={pages} />
+  
+  const handlePaginate = (page) => {
+    dispatch(blogActions.fetchBlogs(page))
+  }
+  return (
+    <div>
+      <div className='row'>
+        <Breadcrumbs pages={pages} />
+      </div>
+      <br />
+      <div className='row'>
+        <div className='col-md-8'>
+          <h4>Blog</h4>
+          <hr />
+          {
+            searchBlogRecords && searchBlogRecords > 0
+              ? <ListBlog blogs={searchBlogs} totalBlog={searchBlogRecords} handlePaginate={handlePaginate} />
+              : <ListBlog blogs={blogs} totalBlog={totalRecords} handlePaginate={handlePaginate} />
+          }
+
         </div>
-        <br />
-        <div className='row'>
-          <div className='col-md-8'>
-            <h4>Blog</h4>
-            <hr />
-            <ListBlog blogs={blogs} totalBlog={totalRecords} paginate={this.paginate} match={match} />
-          </div>
-          <div className='col-md-4'>
-            <h4>Bài viết nổi bật</h4>
-            <hr />
-            <SearchBlog />
-            <TopBlogContainer topBlog={topBlog} />
-          </div>
+        <div className='col-md-4'>
+          <h4>Bài viết nổi bật</h4>
+          <hr />
+          <SearchBlog />
+          <TopBlogContainer />
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    blogReducer: state.blogReducer
-  }
-}
-
-const mapDispatchToProps = (dispath, props) => {
-  return {
-    fetchBlogs: page => {
-      dispath(blogActions.fetchBlogs(page))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlogContainer)
+export default BlogContainer

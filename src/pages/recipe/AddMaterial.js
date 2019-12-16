@@ -76,11 +76,11 @@ const AddMaterial = () => {
             <div className='col-8-md col-12-sm'>
               <form className="form-inline" onSubmit={handleSubmit}>
                 <label className="sr-only" htmlFor="name">Tên nguyên liệu</label>
-                <input type="text" className="form-control mb-2 mr-sm-2" id="name" placeholder="Tên nguyên liệu" name='name' value={state.name} onChange={handleChange} />
+                <input type="text" className="form-control mb-2 mr-sm-2" id="name" placeholder="Tên nguyên liệu" name='name' value={state.name} onChange={handleChange} required={true} />
                 <label className="sr-only" htmlFor="unit">Đơn vị đo</label>
-                <input type="text" className="form-control mb-2 mr-sm-2" id="unit" placeholder="Đơn vị đo" name='unit' value={state.unit} onChange={handleChange} />
+                <input type="text" className="form-control mb-2 mr-sm-2" id="unit" placeholder="Đơn vị đo" name='unit' value={state.unit} onChange={handleChange} required={true} />
                 <label className="sr-only" htmlFor="quantitative">Lượng nguyên liệu cần thiết</label>
-                <input type="number" className="form-control mb-2 mr-sm-2" id="quantitative" placeholder="Lượng nguyên liệu cần thiết" name='quantitative' value={state.quantitative} onChange={handleChange} />
+                <input type="number" className="form-control mb-2 mr-sm-2" id="quantitative" placeholder="Lượng nguyên liệu cần thiết" name='quantitative' value={state.quantitative} onChange={handleChange} required={true} />
 
                 <button type="submit" className="btn btn-primary mb-2">Thêm</button>
               </form>

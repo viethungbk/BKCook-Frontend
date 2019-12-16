@@ -1,20 +1,17 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import ListTopBlog from '../../components/container/blog/ListTopBlog'
 
-class TopBlogContainer extends React.Component {
-  render() {
-    let { topBlog } = this.props
-    return (
-      <ListTopBlog topBlog={topBlog}></ListTopBlog>
-    )
-  }
+const TopBlogContainer = () => {
+  let { blogs } = useSelector(state => state.blogReducer)
+  
+  blogs = blogs.slice(0, 5)
+
+  console.log(blogs)
+  return (
+
+    <ListTopBlog topBlog={blogs}></ListTopBlog>
+  )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    topBlog: state.topBlogReducer
-  }
-}
-
-export default connect(mapStateToProps, null)(TopBlogContainer)
+export default TopBlogContainer

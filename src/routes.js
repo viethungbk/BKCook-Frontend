@@ -8,8 +8,8 @@ import BlogDetailPage from './pages/details/BlogDetailPage'
 import AuthorDetailPage from './pages/details/AuthorDetailPage'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
-import AddBasicInfo from './pages/recipe/AddBasicInfo'
-import AddRecipePage from './pages/recipe/AddRecipePage'
+import AddRecipeContainer from './containers/recipe/AddRecipeContainer'
+import RecipeDetailPage from './pages/details/RecipeDetailPage'
 
 const routes = [
   {
@@ -55,7 +55,12 @@ const routes = [
   {
     path: '/recipe/add/',
     exact: true,
-    main: () => <AddRecipePage />
+    main: () => <AddRecipeContainer />
+  },
+  {
+    path: '/recipe/:idRecipe',
+    exact: true,
+    main: ({ match }) => <RecipeDetailPage match={match} />
   },
   {
     path: '',

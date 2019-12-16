@@ -1,6 +1,6 @@
 import { userService } from '../services/userService'
 import { userConstants } from '../constants/userConstants'
-import { alertActions } from '../actions/alertActions'
+import Toastr from '../components/Toastr'
 
 export const userActions = {
   login,
@@ -16,13 +16,11 @@ function login(email, password) {
       if (statusSuccess) {
         let { user } = data
         dispatch(success(user))
-        dispatch(alertActions.clear())
-
-        dispatch(alertActions.success('Đăng nhập thành công'))
+        Toastr.success('Đăng nhập thành công')
       } else {
         let { message } = data
         dispatch(failure(message))
-        dispatch(alertActions.error(message))
+        Toastr.error({ errCode: null, message: message })
       }
     })
   }
@@ -35,10 +33,8 @@ function login(email, password) {
 function logout() {
   return dispatch => {
     userService.logout()
-
-    dispatch(alertActions.clear())
-    dispatch(alertActions.success('Đăng xuất thành công'))
     dispatch(success())
+    Toastr.success('Đăng xuất thành công')
   }
 
   function success() { return { type: userConstants.LOGOUT } }
@@ -53,14 +49,12 @@ function register(user) {
         let { user } = data
 
         dispatch(success(user))
-        dispatch(alertActions.clear())
-        dispatch(alertActions.success('Đăng ký thành công'))
+        Toastr.success('Đăng ký thành công')
       } else {
         let { message } = data
 
         dispatch(failure(message))
-        dispatch(alertActions.clear())
-        dispatch(alertActions.error(message))
+        Toastr.error({ errCode: null, message })
       }
     })
   }

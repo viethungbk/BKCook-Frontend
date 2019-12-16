@@ -1,71 +1,59 @@
 import React from 'react';
 // import ListCourse from './footer/ListCourse';
 
+const listBottom = [
+  {
+    title: 'Về BKCook',
+    items: ['Công thức', 'Cộng đồng', 'Blog', 'Lớp học nấu ăn']
+  }, {
+    title: 'Tài khoản',
+    items: ['Xem thông tin', 'Giúp đỡ']
+  }
+]
+
+const Item = ({ title, items }) => {
+  return (
+    <>
+      <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h6 className="text-uppercase mb-4 font-weight-bold" style={{color: 'white'}}>{title}</h6>
+        {
+          items.map((item, index) => (
+            <p key={index}>
+              <a href="#!">{item}</a>
+            </p>
+          ))
+        }
+      </div>
+      <hr className="w-100 clearfix d-md-none" />
+    </>
+
+  )
+}
 
 class Footer extends React.Component {
   render() {
     return (
       <footer className="page-footer font-small mdb-color pt-4" style={{ backgroundColor: '#45526E', color: 'white' }}>
-        {/* Footer Links */}
         <div className="container text-center text-md-left">
-          {/* Footer links */}
           <div className="row text-center text-md-left mt-3 pb-3">
-            {/* Grid column */}
             <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h6 className="text-uppercase mb-4 font-weight-bold">Company name</h6>
-              <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                consectetur
-                adipisicing elit.</p>
+              <h6 className="text-uppercase mb-4 font-weight-bold">BkCook.vn</h6>
+              <p>Tìm kiếm các công thức và món ngon</p>
             </div>
-            {/* Grid column */}
             <hr className="w-100 clearfix d-md-none" />
-            {/* Grid column */}
-            <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 className="text-uppercase mb-4 font-weight-bold">Products</h6>
-              <p>
-                <a href="#!">MDBootstrap</a>
-              </p>
-              <p>
-                <a href="#!">MDWordPress</a>
-              </p>
-              <p>
-                <a href="#!">BrandFlow</a>
-              </p>
-              <p>
-                <a href="#!">Bootstrap Angular</a>
-              </p>
-            </div>
-            {/* Grid column */}
-            <hr className="w-100 clearfix d-md-none" />
-            {/* Grid column */}
-            <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h6 className="text-uppercase mb-4 font-weight-bold">Useful links</h6>
-              <p>
-                <a href="#!">Your Account</a>
-              </p>
-              <p>
-                <a href="#!">Become an Affiliate</a>
-              </p>
-              <p>
-                <a href="#!">Shipping Rates</a>
-              </p>
-              <p>
-                <a href="#!">Help</a>
-              </p>
-            </div>
-            {/* Grid column */}
-            <hr className="w-100 clearfix d-md-none" />
-            {/* Grid column */}
+            {
+              listBottom.map((bot, index) => <Item key={index} title={bot.title} items={bot.items} />)
+            }
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
               <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
               <p>
-                <i className="fa fa-home mr-3" /> New York, NY 10012, US</p>
+                <i className="fa fa-home mr-3" />Số 17 Giải phóng, Hà Nội</p>
               <p>
-                <i className="fa fa-envelope mr-3" /> info@gmail.com</p>
+                <i className="fa fa-envelope mr-3" />bkhust@sis.hust.edu.vn</p>
               <p>
-                <i className="fa fa-phone mr-3" /> + 01 234 567 88</p>
+                <i className="fa fa-phone mr-3" /> + 031008789165</p>
               <p>
-                <i className="fa fa-print mr-3" /> + 01 234 567 89</p>
+                <i className="fa fa-print mr-3" /> + 0966351706</p>
             </div>
             {/* Grid column */}
           </div>
@@ -82,40 +70,34 @@ class Footer extends React.Component {
                 </a>
               </p>
             </div>
-            {/* Grid column */}
-            {/* Grid column */}
             <div className="col-md-5 col-lg-4 ml-lg-0">
-              {/* Social buttons */}
               <div className="text-center text-md-right">
                 <ul className="list-unstyled list-inline">
                   <li className="list-inline-item">
-                    <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                    <a href='facebook.com' className="btn-floating btn-sm rgba-white-slight mx-1">
                       <i className="fa fa-facebook-f" />
                     </a>
                   </li>
                   <li className="list-inline-item">
-                    <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                    <a href='twitter.com' className="btn-floating btn-sm rgba-white-slight mx-1">
                       <i className="fa fa-twitter" />
                     </a>
                   </li>
                   <li className="list-inline-item">
-                    <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                    <a href='google.com' className="btn-floating btn-sm rgba-white-slight mx-1">
                       <i className="fa fa-google-plus" />
                     </a>
                   </li>
                   <li className="list-inline-item">
-                    <a className="btn-floating btn-sm rgba-white-slight mx-1">
+                    <a href='facebook.com' className="btn-floating btn-sm rgba-white-slight mx-1">
                       <i className="fa fa-linkedin" />
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
-            {/* Grid column */}
           </div>
-          {/* Grid row */}
         </div>
-        {/* Footer Links */}
       </footer>
     );
   }

@@ -10,6 +10,7 @@ class BlogDetailPageContainer extends React.Component {
   componentDidMount() {
     let { blogId } = this.props
     this.props.fetchBlog(blogId)
+    this.props.resetSearch()
   }
   render() {
     let { currentBlog } = this.props
@@ -32,7 +33,7 @@ class BlogDetailPageContainer extends React.Component {
             <div>
               <div className="card">
                 <div className="card-header">
-                  <h1>{title}</h1>
+                  <h4>{title}</h4>
                 </div>
                 <img src={`${API_URL}${image}`} className="card-img-top" alt={title} />
                 <div className="card-body">
@@ -65,7 +66,7 @@ class BlogDetailPageContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    currentBlog: state.currentBlogReducer
+    currentBlog: state.currentBlogReducer,
   }
 }
 
@@ -73,6 +74,9 @@ const mapDispathToProps = (dispatch, props) => {
   return {
     fetchBlog: (_id) => {
       dispatch(blogActions.fetchBlog(_id))
+    },
+    resetSearch: () => {
+      dispatch(blogActions.resetSearch())
     }
   }
 }

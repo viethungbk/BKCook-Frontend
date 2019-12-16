@@ -1,10 +1,15 @@
 import callApi from '../utils/apiCaller'
+import { ITEM_PER_PAGE } from '../constants/Config'
 
 export const recipeService = {
+  fetchRecipes,
+  fetchRecipe,
   addRecipeBasicInfo,
   addRecipeMaterial,
   addRecipeStep,
-  addRecipeFinish
+  addRecipeFinish,
+  search,
+  getRelatedRecipe
 }
 
 
@@ -168,5 +173,52 @@ function finish(idRecipe) {
       return null
     }
     // return err.response.data
+  })
+}
+
+function fetchRecipes(page = 1) {
+  return callApi(
+    `api/recipes/filter?page=${page}&records=${ITEM_PER_PAGE}`,
+    // `api/blogs?page=${page}&records=${ITEM_PER_PAGE}`,
+    'GET',
+    null
+  )
+}
+
+function fetchRecipe(_id) {
+  console.log(_id, 'service fetch')
+  return callApi(
+    `api/recipes/id?idRecipe=${_id}`,
+    // `api/blogs/id?id=${_id}`,
+    'GET',
+    null
+  ).then(res => {
+    return res.data
+  }).catch(err => { 
+    return err.response.data
+  })
+}
+
+function search(keyword) {
+  return callApi(
+    `api/recipes/search?key=${keyword}`,
+    'GET',
+    null
+  ).then(res => {
+    return res.data
+  }).catch(err => {
+    return err.response.data
+  })
+}
+
+function getRelatedRecipe(_id) {
+  return callApi(
+    `api/recipes/related-recipes?idRecipe=${_id}&page=1&records=4`,
+    'GET',
+    null
+  ).then(res => {
+    return res.data
+  }).catch(err => {
+    return err.response.data
   })
 }

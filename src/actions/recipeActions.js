@@ -1,13 +1,22 @@
 import { recipeService } from '../services/recipeService'
-import { alertActions } from '../actions/alertActions'
 import { recipeConstants } from '../constants/recipeConstants'
+import Toastr from '../components/Toastr'
 
 export const recipeActions = {
+  fetchRecipes,
+  fetchRecipe,
   addRecipeBasicInfo,
   addRecipeMaterial,
   addRecipeStep,
   addRecipeStepFinish,
-  addRecipeFinish
+  addRecipeFinish,
+  clean,
+  search,
+  getRelatedRecipe
+}
+
+function clean() {
+  return { type: recipeConstants.CLEAR }
 }
 
 function addRecipeBasicInfo(basicInfo) {
@@ -22,7 +31,6 @@ function addRecipeBasicInfo(basicInfo) {
         dispatch(success(recipe))
       } else { // false => thong bao message
         let { message } = data
-        dispatch(alertActions.error(message))
         dispatch(failure(message))
       }
     })
@@ -69,7 +77,6 @@ function addRecipeStep(step) {
         dispatch(success(idRecipe, steps))
       } else { // false => thong bao message
         let { message } = data
-        dispatch(alertActions.error(message))
         dispatch(failure(message))
       }
     })
@@ -90,12 +97,10 @@ function addRecipeFinish(recipe) {
     recipeService.addRecipeFinish(recipe).then(response => {
       let { success: statusSuccess, data } = response
       if (statusSuccess) {
-        console.log(response)
-        dispatch(alertActions.success('thêm công thức thành công'))
+        Toastr.success('Thêm công thức thành công')
         dispatch(success())
       } else {
         let { message } = data
-        dispatch(alertActions.error('Thêm công thức không thành công'))
         dispatch(failure(message))
       }
     })
@@ -104,4 +109,63 @@ function addRecipeFinish(recipe) {
   function request() { return { type: recipeConstants.RECIPE_ADD_FINISH_REQUEST } }
   function success() { return { type: recipeConstants.RECIPE_ADD_FINISH_SUCCESS } }
   function failure(error) { return { type: recipeConstants.RECIPE_ADD_FINISH_FAILURE, error } }
+}
+
+function fetchRecipes(page = 1) {
+  return dispatch => {
+    recipeService.fetchRecipes(page).then(res => {
+      let { totalRecords, recipes } = res.data.data
+      dispatch(success(totalRecords, recipes))
+    })
+  }
+
+  function success(totalRecords, recipes) { return { type: recipeConstants.RECIPE_GET_RECIPES, totalRecords, recipes } }
+}
+
+function fetchRecipe(_id) {
+  return dispatch => {
+    recipeService.fetchRecipe(_id).then(response => {
+      let { success: statusSuccess, data } = response
+      console.log(response)
+      if (statusSuccess) {
+        dispatch(success(data))
+      }
+    })
+  }
+
+  function success(recipe) { return { type: recipeConstants.RECIPE_GET_RECIPE, recipe } }
+}
+
+function search(keyword) {
+  return dispatch => {
+    if (keyword === '') {
+      dispatch(resetSearch())
+    } else {
+      recipeService.search(keyword).then(response => {
+        let { success, data } = response
+        if (success) {
+          let { totalRecords, recipes } = data
+          dispatch(search(totalRecords, recipes))
+        }
+      })
+    }
+
+  }
+
+  function search(totalRecords, recipes) { return { type: recipeConstants.RECIPE_SEARCH, totalRecords, recipes } }
+  function resetSearch() { return { type: recipeConstants.RECIPE_RESET_SEARCH } }
+}
+
+function getRelatedRecipe(_id) {
+  return dispatch => {
+    recipeService.getRelatedRecipe(_id).then(response => {
+      let { success: statusSuccess, data } = response
+      if (statusSuccess) {
+        let { totalRecords, recipes } = data
+        dispatch(success(totalRecords, recipes))
+      }
+    })
+  }
+
+  function success(totalRecords, recipes) { return { type: recipeConstants.GET_RELATED_RECIPE, totalRecords, recipes } }
 }

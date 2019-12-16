@@ -3,7 +3,9 @@ import { blogService } from '../services/blogService'
 
 export const blogActions = {
   fetchBlogs,
-  fetchBlog
+  fetchBlog,
+  search,
+  resetSearch
 }
 
 function fetchBlogs(page = 1) {
@@ -27,3 +29,23 @@ function fetchBlog(_id) {
 
   function success(blog) { return { type: blogConstants.FETCH_BLOG, blog } }
 }
+
+function search(keyword) {
+  return dispatch => {
+    if (keyword === '') {
+      dispatch(resetSearch())
+    } else {
+      blogService.search(keyword).then(response => {
+        let { success, data } = response
+        if (success) {
+          let { totalRecords, blogs } = data
+          dispatch(search(totalRecords, blogs))
+        }
+      })
+    }
+  }
+
+  function search(totalRecords, blogs) { return { type: blogConstants.SEARCH_BLOG, totalRecords, blogs } }
+}
+
+function resetSearch() { return { type: blogConstants.RESET_SEARCH } }

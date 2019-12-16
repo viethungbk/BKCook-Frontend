@@ -3,7 +3,8 @@ import { ITEM_PER_PAGE } from '../constants/Config'
 
 export const blogService = {
   fetchBlogs,
-  fetchBlog
+  fetchBlog,
+  search
 }
 
 function fetchBlogs(page = 1) {
@@ -20,4 +21,16 @@ function fetchBlog(_id) {
     'GET',
     null
   )
+}
+
+function search(keyword) {
+  return callApi(
+    `api/blogs/search?key=${keyword}`,
+    'GET',
+    null
+  ).then(res => {
+    return res.data
+  }).catch(err => {
+    return err.response.data
+  })
 }

@@ -13,10 +13,6 @@ class ListBlogPage extends React.Component {
     return (
       <Layout>
         <div className='container mt-100'>
-          {/* <div className='row'>
-          <Breadcrumbs pages={pages} />
-        </div>
-        <br /> */}
           <ListBlogPageContainer {...this.props} />
         </div>
       </Layout>

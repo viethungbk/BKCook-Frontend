@@ -10,7 +10,7 @@ const Account = (props) => {
     <div className="dropdown">
       <Link className="btn btn-outline-success mr-2" to='/recipe/add'>Đăng công thức</Link>
       <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="https://i.pinimg.com/236x/00/8b/7c/008b7c4df7f76c54008b3fb527b3722c--monkey-d-luffy-one-piece.jpg" className="rounded-circle avatar" alt="Cinque Terre" />
+        {/* <img src="https://i.pinimg.com/236x/00/8b/7c/008b7c4df7f76c54008b3fb527b3722c--monkey-d-luffy-one-piece.jpg" className="rounded-circle avatar" alt="Cinque Terre" /> */}
 
         {userName}
       </button>
