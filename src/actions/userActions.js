@@ -5,7 +5,8 @@ import Toastr from '../components/Toastr'
 export const userActions = {
   login,
   logout,
-  register
+  register,
+  clear
 }
 
 function login(email, password) {
@@ -62,4 +63,8 @@ function register(user) {
   function request(user) { return { type: userConstants.REGISTER_REQUEST, user } }
   function success(user) { return { type: userConstants.REGISTER_SUCCESS, user } }
   function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
+}
+
+function clear() {
+  return { type: userConstants.CLEAR_REGISTED }
 }

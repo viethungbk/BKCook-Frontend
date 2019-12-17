@@ -38,7 +38,7 @@ const HomePage = () => {
                 </div>
                 <br />
                 <div className="row">
-                  <ListRecipeContainer title='CÔNG THỨC BỞI COOKY' isShowFull={true} />
+                  <ListRecipeContainer title='CÔNG THỨC BỞI BKCOOK' isShowFull={true} />
                 </div>
                 <br />
               </div>

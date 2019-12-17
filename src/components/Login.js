@@ -19,6 +19,10 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount() {
+    this.props.clear()
+  }
+
   handleChange(e) {
     let { name, value } = e.target
     this.setState({ [name]: value })
@@ -58,7 +62,7 @@ class Login extends React.Component {
               <p className="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
             </div>
             <div className="col-md-12 text-center ">
-              <button type="submit" className=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+              <button type="submit" className=" btn btn-block mybtn btn-primary tx-tfm">Đăng nhập</button>
               <Loading isLoading={loggingIn} />
               {
                 loggedIn && <Redirect to='/' />
@@ -74,13 +78,13 @@ class Login extends React.Component {
             <div className="col-md-12 mb-3">
               <p className="text-center">
                 <a className="google btn mybtn">
-                  <i className="fa fa-google-plus" />Signup using Google
+                  <i className="fa fa-google-plus" />Đăng nhập với google
                   </a>
               </p>
             </div>
             <div className="form-group">
-              <p className="text-center">Don't have account? <Link to='/register'>Sign up here</Link></p>
-              <p className="text-center">Don't want sign in? <Link to='/'>HomePage</Link></p>
+              <p className="text-center">Không có tài khoản? <Link to='/register'>Đăng ký tại đây</Link></p>
+              <p className="text-center">Không muốn đăng nhập? <Link to='/'>Trang chủ</Link></p>
             </div>
           </form>
         </div>
@@ -99,6 +103,9 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     login: (email, password) => {
       dispatch(userActions.login(email, password))
+    },
+    clear: () => {
+      dispatch(userActions.clear())
     }
   }
 }

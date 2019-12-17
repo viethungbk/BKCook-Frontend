@@ -7,8 +7,10 @@ const registrationReducer = (state = initState, action) => {
     case userConstants.REGISTER_REQUEST:
       return { registering: true }
     case userConstants.REGISTER_SUCCESS:
-      return {}
+      return { registerSuccess: true }
     case userConstants.REGISTER_FAILURE:
+      return {}
+    case userConstants.CLEAR_REGISTED:
       return {}
     default:
       return state
