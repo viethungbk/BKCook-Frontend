@@ -27,5 +27,7 @@ export const recipeConstants = {
 
   GET_RELATED_RECIPE: 'GET_RELATED_RECIPE',
 
+  FILTER: 'FILTER',
+
   CLEAR: 'CLEAR'
 }

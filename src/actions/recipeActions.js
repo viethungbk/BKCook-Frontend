@@ -12,7 +12,8 @@ export const recipeActions = {
   addRecipeFinish,
   clean,
   search,
-  getRelatedRecipe
+  getRelatedRecipe,
+  filter
 }
 
 function clean() {
@@ -168,4 +169,36 @@ function getRelatedRecipe(_id) {
   }
 
   function success(totalRecords, recipes) { return { type: recipeConstants.GET_RELATED_RECIPE, totalRecords, recipes } }
+}
+
+function filter(
+  tags,
+  typeRecipe,
+  level,
+  processingMethod,
+  purpose,
+  countryCuisine,
+  typeOfDish,
+  season
+) {
+  return dispatch => {
+    recipeService.filter(
+      tags,
+      typeRecipe,
+      level,
+      processingMethod,
+      purpose,
+      countryCuisine,
+      typeOfDish,
+      season
+    ).then(response => {
+      let { success: statusSuccess, data } = response
+      if (statusSuccess) {
+        let { totalRecords, recipes } = data
+        dispatch(success(totalRecords, recipes))
+      }
+    })
+  }
+
+  function success(totalRecords, recipes) { return { type: recipeConstants.FILTER, totalRecords, recipes } }
 }

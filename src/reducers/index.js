@@ -11,6 +11,7 @@ import searchRecipeReducer from './searchRecipeReducer'
 import searchBlogReducer from './searchBlogReducer'
 import currentRecipeReducer from './currentRecipeReducer'
 import relatedRecipeReducer from './relatedRecipeReducer'
+import filterRecipeReducer from './filterRecipeReducer'
 
 const appReducers = combineReducers({
   blogReducer,
@@ -24,7 +25,8 @@ const appReducers = combineReducers({
   searchRecipeReducer,
   searchBlogReducer,
   currentRecipeReducer,
-  relatedRecipeReducer
+  relatedRecipeReducer,
+  filterRecipeReducer
 })
 
 export default appReducers

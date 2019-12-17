@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import FilterRecipe from '../../components/container/recipe/FilterRecipe'
 import { useSelector, useDispatch } from 'react-redux'
 import { recipeActions } from '../../actions/recipeActions'
@@ -9,14 +9,23 @@ const ListRecipePageContainer = () => {
   const dispatch = useDispatch()
   let { totalRecords, recipes } = useSelector(state => state.listRecipeReducer)
   let { totalRecords: searchTotalRecords } = useSelector(state => state.searchRecipeReducer)
-  
+  let { totalRecords: filterTotalRecords, recipes: filterRecipes } = useSelector(state => state.filterRecipeReducer)
+
   useEffect(() => {
     dispatch(recipeActions.fetchRecipes())
   }, [])
 
+  let [state, setState] = useState({
+    filtered: false
+  })
+
   const handlePaginate = (page) => {
     dispatch(recipeActions.fetchRecipes(page))
     console.log(page)
+  }
+
+  const filtered = (value) => {
+    setState({ filtered: value })
   }
 
   return (
@@ -25,14 +34,27 @@ const ListRecipePageContainer = () => {
         <h2>Công Thức</h2>
         <p>Tìm kiếm món ăn ngon mỗi ngày</p>
 
-        <FilterRecipe />
+        <FilterRecipe filtered={filtered} />
       </div>
+      {
+        state.filtered
+          ? (
+              (filterTotalRecords && filterTotalRecords > 0)
 
-      <div className='row'>
-        {
-          searchTotalRecords > 0 ? <SearchRecipeResult /> : <ListRecipe isShowFull={true} recipes={recipes} totalRecords={totalRecords} handlePaginate={handlePaginate} />
-        }
-      </div>
+                ? <ListRecipe isShowFull={true} recipes={filterRecipes} totalRecords={filterTotalRecords} handlePaginate={handlePaginate} />
+                : <h5>Không tìm thấy kết quả</h5>
+            )
+          : (
+            <div className='row'>
+              {
+                searchTotalRecords > 0 ? <SearchRecipeResult /> : <ListRecipe isShowFull={true} recipes={recipes} totalRecords={totalRecords} handlePaginate={handlePaginate} />
+              }
+            </div>
+          )
+
+      }
+
+
     </div>
   )
 

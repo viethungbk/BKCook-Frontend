@@ -9,7 +9,8 @@ export const recipeService = {
   addRecipeStep,
   addRecipeFinish,
   search,
-  getRelatedRecipe
+  getRelatedRecipe,
+  filter
 }
 
 
@@ -93,7 +94,7 @@ function addRecipeFinish(recipe) {
   return addRecipeCate(recipe).then(res => {
     let { success, data } = res
     console.log(res, 'addrecipefinish')
-    
+
     if (success) {
       recipe = { ...recipe, data }
       return finish(recipe.idRecipe).then(response => {
@@ -166,7 +167,7 @@ function finish(idRecipe) {
     // return res.data
   }).catch(err => {
     if (err.response.data) {
-      console.log(err.response.data) 
+      console.log(err.response.data)
       return err.response.data
     } else {
       console.log('err')
@@ -194,7 +195,7 @@ function fetchRecipe(_id) {
     null
   ).then(res => {
     return res.data
-  }).catch(err => { 
+  }).catch(err => {
     return err.response.data
   })
 }
@@ -214,6 +215,27 @@ function search(keyword) {
 function getRelatedRecipe(_id) {
   return callApi(
     `api/recipes/related-recipes?idRecipe=${_id}&page=1&records=4`,
+    'GET',
+    null
+  ).then(res => {
+    return res.data
+  }).catch(err => {
+    return err.response.data
+  })
+}
+
+function filter(
+  tags,
+  typeRecipe,
+  level,
+  processingMethod,
+  purpose,
+  countryCuisine,
+  typeOfDish,
+  season
+) {
+  return callApi(
+    `api/recipes/filter?tags=${tags}&typeRecipe=${typeRecipe}&level=${level}&processingMethod=${processingMethod}&purpose=${purpose}&countryCuisine=${countryCuisine}&typeOfDish=${typeOfDish}&season=${season}`,
     'GET',
     null
   ).then(res => {
